@@ -14,9 +14,44 @@ export default function PlanPage() {
     userCount: "",
     budget: "없음",
   });
+  const [analyzeUrl, setAnalyzeUrl] = useState("");
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analyzeResult, setAnalyzeResult] = useState("");
   const [saved, setSaved] = useState<SavedPlan | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const handleAnalyze = async () => {
+    if (!analyzeUrl.trim()) return;
+    setAnalyzing(true);
+    setAnalyzeResult("");
+    setError("");
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: analyzeUrl.trim() }),
+      });
+      const data = await res.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setForm((prev) => ({
+          ...prev,
+          productName: data.productName || prev.productName,
+          productDescription:
+            data.productDescription || prev.productDescription,
+          targetAudience: data.targetAudience || prev.targetAudience,
+          stage: data.stage || prev.stage,
+        }));
+        setAnalyzeResult(data.detected || "분석 완료");
+      }
+    } catch {
+      setError("링크 분석 중 오류가 발생했습니다");
+    } finally {
+      setAnalyzing(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,6 +107,43 @@ export default function PlanPage() {
           파이프라인을 제안합니다.
         </p>
       </header>
+
+      {/* Link Analyzer */}
+      <div className="rounded-xl border border-border bg-card p-5 mb-8">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-sm font-medium">링크로 자동 분석</span>
+          <span className="text-[10px] px-1.5 py-0.5 rounded-full border border-border text-muted">
+            선택
+          </span>
+        </div>
+        <p className="text-xs text-muted mb-3">
+          App Store / Google Play / Steam / 랜딩페이지 링크를 넣으면 AI가 제품
+          정보를 자동으로 채워줍니다.
+        </p>
+        <div className="flex gap-2">
+          <input
+            type="url"
+            value={analyzeUrl}
+            onChange={(e) => setAnalyzeUrl(e.target.value)}
+            placeholder="https://apps.apple.com/... 또는 제품 URL"
+            className="flex-1 px-3 py-2 text-sm border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-accent"
+          />
+          <button
+            type="button"
+            onClick={handleAnalyze}
+            disabled={analyzing || !analyzeUrl.trim()}
+            className="px-4 py-2 text-sm font-medium rounded-lg border border-border text-foreground hover:bg-card-hover transition-all disabled:opacity-50 shrink-0"
+          >
+            {analyzing ? "분석 중..." : "분석"}
+          </button>
+        </div>
+        {analyzeResult && (
+          <p className="text-xs mt-2" style={{ color: "#16a34a" }}>
+            {analyzeResult}에서 제품 정보를 가져왔습니다. 아래에서 확인하고
+            수정하세요.
+          </p>
+        )}
+      </div>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-5 mb-12">
