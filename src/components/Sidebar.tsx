@@ -42,6 +42,17 @@ export default function Sidebar() {
           AI 마케팅 플랜
         </Link>
 
+        <Link
+          href="/plans"
+          className={`block px-3 py-1.5 text-sm rounded-md transition-all ${
+            pathname.startsWith("/plans")
+              ? "bg-accent/10 text-accent-light font-medium"
+              : "text-muted hover:text-foreground hover:bg-card-hover"
+          }`}
+        >
+          저장된 플랜
+        </Link>
+
         <div className="pt-3 pb-1 px-3">
           <span className="text-xs font-medium text-muted uppercase tracking-wider">
             카테고리
