@@ -4,32 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { createPlan, type SavedPlan } from "@/data/plans";
 import PlanResult from "@/components/PlanResult";
+import AnalysisReport from "@/components/AnalysisReport";
 
-interface Analysis {
-  oneLiner: string;
-  category: string;
-  businessModel: string;
-  pricing: string;
-  coreFeatures: string[];
-  uniqueValue: string;
-  competitors: string[];
-  marketSize: string;
-  strengths: string[];
-  weaknesses: string[];
-  currentMarketing: string[];
-  missingMarketing: string[];
-  quickWins: string[];
-  verdict: string;
-}
-
-interface AnalyzeData {
-  productName: string;
-  productDescription: string;
-  targetAudience: string;
-  stage: string;
-  detected: string;
-  analysis: Analysis;
-}
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export default function PlanPage() {
   const [form, setForm] = useState({
@@ -42,7 +19,7 @@ export default function PlanPage() {
   });
   const [analyzeUrl, setAnalyzeUrl] = useState("");
   const [analyzing, setAnalyzing] = useState(false);
-  const [analysisData, setAnalysisData] = useState<AnalyzeData | null>(null);
+  const [analysisData, setAnalysisData] = useState<any>(null);
   const [saved, setSaved] = useState<SavedPlan | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -111,8 +88,6 @@ export default function PlanPage() {
   const update = (key: string, value: string) =>
     setForm((prev) => ({ ...prev, [key]: value }));
 
-  const a = analysisData?.analysis;
-
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <nav className="flex items-center gap-2 text-sm text-muted mb-8">
@@ -174,189 +149,7 @@ export default function PlanPage() {
       </div>
 
       {/* Analysis Report */}
-      {a && (
-        <div className="rounded-xl border border-accent/30 bg-card mb-8 overflow-hidden">
-          {/* Header */}
-          <div className="p-5 border-b border-border">
-            <div className="flex items-center gap-2 mb-2">
-              <span
-                className="text-xs px-2 py-0.5 rounded-full border"
-                style={{ borderColor: "#7c3aed", color: "#7c3aed" }}
-              >
-                {analysisData.detected}
-              </span>
-              <span className="text-xs px-2 py-0.5 rounded-full border border-border text-muted">
-                {a.category}
-              </span>
-            </div>
-            <h2 className="text-xl font-bold mb-1">
-              {analysisData.productName}
-            </h2>
-            <p className="text-sm text-muted">{a.oneLiner}</p>
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
-            <div className="p-5">
-              <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
-                비즈니스 모델
-              </h3>
-              <p className="text-sm font-medium">{a.businessModel}</p>
-              <p className="text-xs text-muted mt-1">{a.pricing}</p>
-            </div>
-            <div className="p-5">
-              <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
-                시장 규모
-              </h3>
-              <p className="text-sm">{a.marketSize}</p>
-            </div>
-          </div>
-
-          {/* Core Features */}
-          <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
-              핵심 기능
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {a.coreFeatures.map((f, i) => (
-                <span
-                  key={i}
-                  className="text-xs px-2.5 py-1 rounded-lg border border-border text-foreground"
-                >
-                  {f}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Unique Value */}
-          <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
-              차별화 포인트
-            </h3>
-            <p className="text-sm">{a.uniqueValue}</p>
-          </div>
-
-          {/* Competitors */}
-          <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
-              경쟁 제품
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {a.competitors.map((c, i) => (
-                <span
-                  key={i}
-                  className="text-xs px-2.5 py-1 rounded-lg border border-border text-muted"
-                >
-                  {c}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Strengths / Weaknesses */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border">
-            <div className="p-5">
-              <h3
-                className="text-xs font-semibold mb-3 uppercase tracking-wider"
-                style={{ color: "#16a34a" }}
-              >
-                강점
-              </h3>
-              <ul className="space-y-1.5">
-                {a.strengths.map((s, i) => (
-                  <li key={i} className="text-sm flex gap-2">
-                    <span style={{ color: "#16a34a" }}>+</span> {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="p-5">
-              <h3
-                className="text-xs font-semibold mb-3 uppercase tracking-wider"
-                style={{ color: "#dc2626" }}
-              >
-                약점 / 리스크
-              </h3>
-              <ul className="space-y-1.5">
-                {a.weaknesses.map((w, i) => (
-                  <li key={i} className="text-sm flex gap-2">
-                    <span style={{ color: "#dc2626" }}>-</span> {w}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Marketing Channels */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border">
-            <div className="p-5">
-              <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
-                현재 마케팅
-              </h3>
-              <ul className="space-y-1.5">
-                {a.currentMarketing.map((m, i) => (
-                  <li key={i} className="text-sm text-muted">
-                    {m}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="p-5">
-              <h3
-                className="text-xs font-semibold mb-3 uppercase tracking-wider"
-                style={{ color: "#7c3aed" }}
-              >
-                미활용 채널 (추천)
-              </h3>
-              <ul className="space-y-1.5">
-                {a.missingMarketing.map((m, i) => (
-                  <li key={i} className="text-sm" style={{ color: "#7c3aed" }}>
-                    {m}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Quick Wins */}
-          <div className="p-5 border-t border-border">
-            <h3
-              className="text-xs font-semibold mb-3 uppercase tracking-wider"
-              style={{ color: "#f59e0b" }}
-            >
-              지금 바로 실행 가능한 액션
-            </h3>
-            <ol className="space-y-2">
-              {a.quickWins.map((w, i) => (
-                <li key={i} className="text-sm flex gap-2">
-                  <span
-                    className="font-bold text-xs mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: "#f59e0b", color: "white" }}
-                  >
-                    {i + 1}
-                  </span>
-                  {w}
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Verdict */}
-          <div
-            className="p-5 border-t border-border"
-            style={{ backgroundColor: "rgba(124, 58, 237, 0.05)" }}
-          >
-            <h3
-              className="text-xs font-semibold mb-2 uppercase tracking-wider"
-              style={{ color: "#7c3aed" }}
-            >
-              종합 평가
-            </h3>
-            <p className="text-sm leading-relaxed">{a.verdict}</p>
-          </div>
-        </div>
-      )}
+      {analysisData?.analysis && <AnalysisReport data={analysisData} />}
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-5 mb-12">
