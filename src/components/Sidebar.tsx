@@ -4,6 +4,35 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { categories } from "@/data/categories";
 import ThemeToggle from "./ThemeToggle";
+import Search from "./Search";
+
+const phases = [
+  {
+    label: "검증",
+    icon: "🌱",
+    slugs: ["validation", "user-research"],
+  },
+  {
+    label: "첫 유저 확보",
+    icon: "🎯",
+    slugs: ["launch", "producthunt", "sales", "reddit"],
+  },
+  {
+    label: "성장",
+    icon: "🚀",
+    slugs: ["seo", "llm-seo", "social-media", "content", "email", "free-tools"],
+  },
+  {
+    label: "스케일",
+    icon: "📈",
+    slugs: ["ads", "influencer", "affiliates", "cro"],
+  },
+  {
+    label: "기반",
+    icon: "🏗",
+    slugs: ["landing", "pricing", "misc"],
+  },
+];
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -21,9 +50,14 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">
+        {/* Search */}
+        <div className="px-1 pb-2">
+          <Search />
+        </div>
+
         <Link
           href="/"
-          className={`block px-3 py-2 text-sm rounded-md transition-all ${
+          className={`block px-3 py-1.5 text-sm rounded-md transition-all ${
             pathname === "/"
               ? "bg-accent/10 text-accent-light font-medium"
               : "text-muted hover:text-foreground hover:bg-card-hover"
@@ -53,28 +87,35 @@ export default function Sidebar() {
           저장된 플랜
         </Link>
 
-        <div className="pt-3 pb-1 px-3">
-          <span className="text-xs font-medium text-muted uppercase tracking-wider">
-            카테고리
-          </span>
-        </div>
-
-        {categories.map((cat) => {
-          const isActive = pathname === `/category/${cat.slug}`;
-          return (
-            <Link
-              key={cat.slug}
-              href={`/category/${cat.slug}`}
-              className={`block px-3 py-1.5 text-sm rounded-md transition-all ${
-                isActive
-                  ? "bg-accent/10 text-accent-light font-medium"
-                  : "text-muted hover:text-foreground hover:bg-card-hover"
-              }`}
-            >
-              {cat.emoji} {cat.title}
-            </Link>
-          );
-        })}
+        {/* Phase-grouped categories */}
+        {phases.map((phase) => (
+          <div key={phase.label}>
+            <div className="pt-3 pb-1 px-3 flex items-center gap-1.5">
+              <span className="text-xs">{phase.icon}</span>
+              <span className="text-[10px] font-semibold text-muted uppercase tracking-wider">
+                {phase.label}
+              </span>
+            </div>
+            {phase.slugs.map((slug) => {
+              const cat = categories.find((c) => c.slug === slug);
+              if (!cat) return null;
+              const isActive = pathname === `/category/${slug}`;
+              return (
+                <Link
+                  key={slug}
+                  href={`/category/${slug}`}
+                  className={`block px-3 py-1.5 text-sm rounded-md transition-all ${
+                    isActive
+                      ? "bg-accent/10 text-accent-light font-medium"
+                      : "text-muted hover:text-foreground hover:bg-card-hover"
+                  }`}
+                >
+                  {cat.title}
+                </Link>
+              );
+            })}
+          </div>
+        ))}
       </nav>
 
       {/* Footer */}
