@@ -154,7 +154,7 @@ export default function PlanPage() {
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-5 mb-12">
         {analysisData && (
-          <p className="text-xs text-muted -mb-2">
+          <p className="text-xs text-muted mb-4">
             아래 정보를 확인/수정한 후 마케팅 플랜을 생성하세요.
           </p>
         )}
