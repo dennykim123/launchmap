@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
-import { categories } from "@/data/categories";
-import ThemeToggle from "@/components/ThemeToggle";
+import Sidebar from "@/components/Sidebar";
 import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
@@ -33,15 +31,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="dark" suppressHydrationWarning>
+    <html lang="ko" className="" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 var theme = localStorage.getItem('launchmap-theme');
-                if (theme === 'light') {
-                  document.documentElement.classList.remove('dark');
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
                 }
               })();
             `,
@@ -51,69 +49,43 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen flex flex-col">
-          <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
-            <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-2 group">
-                <span className="text-xl">🗺️</span>
-                <span className="font-bold text-lg text-foreground group-hover:text-accent-light transition-colors">
-                  LaunchMap
-                </span>
-              </Link>
-              <div className="flex items-center gap-1">
-                <nav className="hidden md:flex items-center gap-1">
-                  {categories.slice(0, 6).map((cat) => (
-                    <Link
-                      key={cat.slug}
-                      href={`/category/${cat.slug}`}
-                      className="px-3 py-1.5 text-sm text-muted hover:text-foreground hover:bg-card rounded-md transition-all"
-                    >
-                      {cat.emoji} {cat.title}
-                    </Link>
-                  ))}
-                  <Link
-                    href="/#all"
-                    className="px-3 py-1.5 text-sm text-accent-light hover:text-accent hover:bg-card rounded-md transition-all"
+        {/* Mobile */}
+        <MobileNav />
+
+        {/* Desktop */}
+        <div className="flex min-h-screen">
+          <Sidebar />
+          <div className="flex-1 flex flex-col min-w-0">
+            <main className="flex-1">{children}</main>
+            <footer className="border-t border-border py-8 mt-16">
+              <div className="max-w-4xl mx-auto px-4 text-center text-sm text-muted space-y-2">
+                <p>
+                  Based on{" "}
+                  <a
+                    href="https://github.com/EdoStra/Marketing-for-Founders"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-light hover:underline"
                   >
-                    전체 보기
-                  </Link>
-                </nav>
-                <ThemeToggle />
-                <MobileNav />
+                    Marketing for Founders
+                  </a>{" "}
+                  by Edoardo Stradella (CC BY-SA 4.0)
+                </p>
+                <p>
+                  LaunchMap — 스타트업 마케팅 로드맵 |{" "}
+                  <a
+                    href="https://lpad.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-light hover:underline"
+                  >
+                    LaunchPad
+                  </a>{" "}
+                  패밀리
+                </p>
               </div>
-            </div>
-          </header>
-
-          <main className="flex-1">{children}</main>
-
-          <footer className="border-t border-border py-8 mt-16">
-            <div className="max-w-6xl mx-auto px-4 text-center text-sm text-muted space-y-2">
-              <p>
-                Based on{" "}
-                <a
-                  href="https://github.com/EdoStra/Marketing-for-Founders"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent-light hover:underline"
-                >
-                  Marketing for Founders
-                </a>{" "}
-                by Edoardo Stradella (CC BY-SA 4.0)
-              </p>
-              <p>
-                LaunchMap — 스타트업 마케팅 로드맵 |{" "}
-                <a
-                  href="https://lpad.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent-light hover:underline"
-                >
-                  LaunchPad
-                </a>{" "}
-                패밀리
-              </p>
-            </div>
-          </footer>
+            </footer>
+          </div>
         </div>
       </body>
     </html>
