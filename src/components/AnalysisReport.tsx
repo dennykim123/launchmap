@@ -10,6 +10,7 @@ export default function AnalysisReport({ data }: { data: any }) {
   const appStore = a.appStoreData || {};
   const hasAppStoreData =
     appStore.rating || appStore.reviewCount || appStore.categoryRank;
+  const gameConsulting = a.gameConsulting || null;
 
   return (
     <div className="rounded-xl border border-accent/30 bg-card mb-8 overflow-hidden">
@@ -30,8 +31,106 @@ export default function AnalysisReport({ data }: { data: any }) {
         <p className="text-sm text-muted">{a.oneLiner}</p>
       </div>
 
+      {/* Hard Truth — callout box */}
+      {a.hardTruth && (
+        <div
+          className="p-5 border-t border-border"
+          style={{ backgroundColor: "rgba(245, 158, 11, 0.06)" }}
+        >
+          <div
+            className="rounded-lg border-2 p-4"
+            style={{ borderColor: "#f59e0b" }}
+          >
+            <h3
+              className="text-xs font-semibold mb-2 uppercase tracking-wider"
+              style={{ color: "#d97706" }}
+            >
+              불편한 진실
+            </h3>
+            <p className="text-sm leading-relaxed">{a.hardTruth}</p>
+          </div>
+        </div>
+      )}
+
+      {/* Do Not Do — red list */}
+      {(a.doNotDo || []).length > 0 && (
+        <div className="p-5 border-t border-border">
+          <div
+            className="rounded-lg border-2 p-4"
+            style={{ borderColor: "#ef4444", backgroundColor: "rgba(239, 68, 68, 0.03)" }}
+          >
+            <h3
+              className="text-xs font-semibold mb-3 uppercase tracking-wider"
+              style={{ color: "#dc2626" }}
+            >
+              지금 절대 하면 안 되는 것
+            </h3>
+            <ul className="space-y-2">
+              {a.doNotDo.map((item: string, i: number) => (
+                <li key={i} className="text-sm flex gap-2">
+                  <span style={{ color: "#ef4444" }} className="shrink-0">
+                    ✕
+                  </span>
+                  <span className="text-foreground/80">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {/* Vanity vs Real Metrics — 2 columns */}
+      {((a.vanityMetrics || []).length > 0 ||
+        (a.realMetrics || []).length > 0) && (
+        <div className="p-5 border-t border-border">
+          <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
+            허상 지표 vs 진짜 지표
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: "#ef4444", backgroundColor: "rgba(239, 68, 68, 0.03)" }}
+            >
+              <p
+                className="text-[10px] font-semibold mb-2 uppercase tracking-wider"
+                style={{ color: "#dc2626" }}
+              >
+                의미 없는 지표
+              </p>
+              <ul className="space-y-1.5">
+                {(a.vanityMetrics || []).map((m: string, i: number) => (
+                  <li key={i} className="text-sm text-muted flex gap-2">
+                    <span style={{ color: "#ef4444" }}>✕</span>
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div
+              className="rounded-lg border p-4"
+              style={{ borderColor: "#22c55e", backgroundColor: "rgba(34, 197, 94, 0.03)" }}
+            >
+              <p
+                className="text-[10px] font-semibold mb-2 uppercase tracking-wider"
+                style={{ color: "#16a34a" }}
+              >
+                봐야 하는 지표
+              </p>
+              <ul className="space-y-1.5">
+                {(a.realMetrics || []).map((m: string, i: number) => (
+                  <li key={i} className="text-sm flex gap-2">
+                    <span style={{ color: "#22c55e" }}>✓</span>
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Business + Market */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
+      <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border">
         <div className="p-5">
           <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
             비즈니스 모델
@@ -78,13 +177,17 @@ export default function AnalysisReport({ data }: { data: any }) {
               )}
               {appStore.updateFrequency && (
                 <div>
-                  <p className="text-lg font-bold">{appStore.updateFrequency}</p>
+                  <p className="text-lg font-bold">
+                    {appStore.updateFrequency}
+                  </p>
                   <p className="text-[10px] text-muted">업데이트 주기</p>
                 </div>
               )}
             </div>
             {appStore.recentReviews && (
-              <p className="text-xs text-muted mt-3">{appStore.recentReviews}</p>
+              <p className="text-xs text-muted mt-3">
+                {appStore.recentReviews}
+              </p>
             )}
           </div>
         </div>
@@ -123,8 +226,7 @@ export default function AnalysisReport({ data }: { data: any }) {
         <div className="space-y-2">
           {competitors.map((c: any, i: number) => {
             const name = typeof c === "string" ? c : c.name;
-            const comparison =
-              typeof c === "string" ? "" : c.comparison;
+            const comparison = typeof c === "string" ? "" : c.comparison;
             return (
               <div
                 key={i}
@@ -156,7 +258,10 @@ export default function AnalysisReport({ data }: { data: any }) {
             {positioning.ideal && (
               <div
                 className="p-3 rounded-lg border"
-                style={{ borderColor: "#7c3aed", backgroundColor: "rgba(124,58,237,0.03)" }}
+                style={{
+                  borderColor: "#7c3aed",
+                  backgroundColor: "rgba(124,58,237,0.03)",
+                }}
               >
                 <p className="text-[10px] mb-1" style={{ color: "#7c3aed" }}>
                   추천
@@ -338,6 +443,46 @@ export default function AnalysisReport({ data }: { data: any }) {
         </ol>
       </div>
 
+      {/* Game Consulting */}
+      {gameConsulting && (
+        <div className="p-5 border-t border-border">
+          <h3
+            className="text-xs font-semibold mb-3 uppercase tracking-wider"
+            style={{ color: "#7c3aed" }}
+          >
+            게임 마케팅 컨설팅
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {gameConsulting.trailerAdvice && (
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-[10px] text-muted mb-1">트레일러 조언</p>
+                <p className="text-sm">{gameConsulting.trailerAdvice}</p>
+              </div>
+            )}
+            {gameConsulting.wishlistStrategy && (
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-[10px] text-muted mb-1">
+                  위시리스트 전략
+                </p>
+                <p className="text-sm">{gameConsulting.wishlistStrategy}</p>
+              </div>
+            )}
+            {gameConsulting.communityAdvice && (
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-[10px] text-muted mb-1">커뮤니티 구축</p>
+                <p className="text-sm">{gameConsulting.communityAdvice}</p>
+              </div>
+            )}
+            {gameConsulting.launchTiming && (
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-[10px] text-muted mb-1">출시 타이밍</p>
+                <p className="text-sm">{gameConsulting.launchTiming}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Verdict */}
       <div
         className="p-5 border-t border-border"
@@ -351,6 +496,27 @@ export default function AnalysisReport({ data }: { data: any }) {
         </h3>
         <p className="text-sm leading-relaxed">{a.verdict}</p>
       </div>
+
+      {/* Two Week Test — purple callout at bottom */}
+      {a.twoWeekTest && (
+        <div
+          className="p-5 border-t border-border"
+          style={{ backgroundColor: "rgba(124, 58, 237, 0.08)" }}
+        >
+          <div
+            className="rounded-lg border-2 p-4"
+            style={{ borderColor: "#7c3aed" }}
+          >
+            <h3
+              className="text-xs font-semibold mb-2 uppercase tracking-wider"
+              style={{ color: "#7c3aed" }}
+            >
+              2주 안에 검증하세요
+            </h3>
+            <p className="text-sm leading-relaxed">{a.twoWeekTest}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

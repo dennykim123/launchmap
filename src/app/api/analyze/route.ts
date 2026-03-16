@@ -55,6 +55,17 @@ function detectSource(url: string) {
   return "website";
 }
 
+function isGameUrl(url: string, source: string): boolean {
+  if (source === "steam") return true;
+  // App Store / Play Store game categories
+  if (url.includes("apps.apple.com") && url.includes("/game")) return true;
+  if (url.includes("play.google.com") && url.includes("category/GAME"))
+    return true;
+  // General game-related URL patterns
+  if (/\bgame\b/i.test(url)) return true;
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
@@ -70,6 +81,7 @@ export async function POST(req: NextRequest) {
   }
 
   const source = detectSource(url);
+  const isGame = isGameUrl(url, source);
 
   // 1) Fetch main page
   let mainContent: string;
@@ -85,12 +97,24 @@ export async function POST(req: NextRequest) {
   // 2) Extract product name hint from content (first 500 chars)
   const nameHint = mainContent.slice(0, 500);
 
-  // 3) Parallel: search for reviews, competitors, market data
-  const [reviewSearch, competitorSearch, marketSearch] = await Promise.all([
+  // 3) Parallel: search for reviews, competitors, market data + game-specific
+  const searchPromises: Promise<string>[] = [
     searchWeb(`${nameHint.slice(0, 80)} review 2024 2025`),
     searchWeb(`${nameHint.slice(0, 80)} alternatives competitors vs`),
     searchWeb(`${nameHint.slice(0, 80)} market size industry analysis`),
-  ]);
+  ];
+
+  if (isGame) {
+    searchPromises.push(
+      searchWeb(`${nameHint.slice(0, 80)} steam wishlists`),
+      searchWeb(`${nameHint.slice(0, 80)} steam reviews`)
+    );
+  }
+
+  const searchResults = await Promise.all(searchPromises);
+  const [reviewSearch, competitorSearch, marketSearch] = searchResults;
+  const wishlistSearch = isGame ? searchResults[3] : "";
+  const steamReviewSearch = isGame ? searchResults[4] : "";
 
   // 4) Build context
   const sourceLabel =
@@ -102,7 +126,7 @@ export async function POST(req: NextRequest) {
           ? "Steam"
           : "웹사이트";
 
-  const fullContext = `## 제품 페이지 (${sourceLabel})
+  let fullContext = `## 제품 페이지 (${sourceLabel})
 URL: ${url}
 
 ${mainContent}
@@ -116,12 +140,37 @@ ${competitorSearch.slice(0, 3000)}
 ## 웹 검색: 시장 및 산업 분석
 ${marketSearch.slice(0, 3000)}`;
 
+  if (isGame) {
+    fullContext += `
+
+## 웹 검색: 위시리스트 데이터
+${wishlistSearch.slice(0, 2000)}
+
+## 웹 검색: Steam 리뷰 분석
+${steamReviewSearch.slice(0, 2000)}`;
+  }
+
+  const gameConsultingField = isGame
+    ? `,
+    "gameConsulting": {
+      "trailerAdvice": "게임 트레일러에 대한 구체적 조언 (길이, 구성, 후킹 포인트)",
+      "wishlistStrategy": "위시리스트 확보 전략 (목표 수치, 채널별 전환율, 타이밍)",
+      "communityAdvice": "커뮤니티 구축 전략 (Discord, Reddit, Steam 포럼 활용법)",
+      "launchTiming": "출시 타이밍 조언 (시즌, 세일 이벤트, 경쟁작 회피)"
+    }`
+    : "";
+
+  const gamePersona = isGame
+    ? " 게임 업계에서 10년 이상 경력이 있으며, 인디 게임부터 AAA까지 마케팅을 컨설팅한 경험이 있습니다."
+    : "";
+
   const client = new Anthropic({ apiKey });
 
   const message = await client.messages.create({
     model: "claude-sonnet-4-20250514",
     max_tokens: 4096,
-    system: `당신은 10년 경력의 스타트업 투자심사역이자 마케팅 컨설턴트입니다.
+    system: `당신은 투자를 100번 이상 거절해본 시리얼 창업자이자 VC입니다. 솔직하고 날카롭게 말합니다. 좋은 말만 하지 않습니다.
+10년 경력의 스타트업 투자심사역이자 마케팅 컨설턴트이기도 합니다.${gamePersona}
 제품 페이지와 웹 검색 결과를 종합 분석하여 투자 보고서 수준의 제품 분석 리포트를 작성합니다.
 
 반드시 아래 JSON 형식으로만 응답하세요. 다른 텍스트 없이 JSON만 출력하세요.
@@ -190,7 +239,13 @@ ${marketSearch.slice(0, 3000)}`;
       "액션 5"
     ],
 
-    "verdict": "종합 평가 3~4문장. 투자자/컨설턴트 관점에서 이 제품의 시장 기회, 가장 큰 리스크, 그리고 지금 집중해야 할 한 가지"
+    "hardTruth": "이 제품에 대해 창업자가 듣기 싫어도 알아야 하는 불편한 진실 1~2문장. 솔직하고 날카롭게.",
+    "doNotDo": ["지금 절대 하면 안 되는 마케팅 액션 1 + 이유", "액션 2 + 이유", "액션 3 + 이유"],
+    "vanityMetrics": ["이 제품에서 봐봤자 의미 없는 허상 지표 1", "지표 2"],
+    "realMetrics": ["대신 봐야 하는 진짜 지표 1", "지표 2", "지표 3"],
+    "twoWeekTest": "2주 안에 검증할 수 있는 핵심 가설 1문장",
+
+    "verdict": "종합 평가 3~4문장. 투자자/컨설턴트 관점에서 이 제품의 시장 기회, 가장 큰 리스크, 그리고 지금 집중해야 할 한 가지"${gameConsultingField}
   }
 }`,
     messages: [
