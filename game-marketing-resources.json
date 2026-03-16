@@ -1,0 +1,262 @@
+{
+  "title": "Game Marketing Resource Database",
+  "description": "Marketing for Game Developers - 12 categories, 143 curated resources",
+  "lastUpdated": "2026-03-16",
+  "tagLegend": {
+    "가이드": "Guide / How-to article",
+    "도구": "Tool / Platform / Software",
+    "템플릿": "Template / Boilerplate",
+    "코스": "Online course / Tutorial series",
+    "사례": "Case study / Postmortem / Real example",
+    "커뮤니티": "Community / Newsletter / Forum",
+    "영상": "Video / Talk / Podcast",
+    "예시": "Example / Showcase"
+  },
+  "keyPeople": [
+    { "name": "Chris Zukowski", "expertise": "Steam marketing, wishlists, page optimization", "platform": "howtomarketagame.com" },
+    { "name": "Derek Lieu", "expertise": "Game trailer editing and production", "platform": "derek-lieu.com" },
+    { "name": "Victoria Tran", "expertise": "Community management, social media", "platform": "victoriatran.com" },
+    { "name": "Simon Carless", "expertise": "Game discoverability, Steam data analysis", "platform": "newsletter.gamediscover.co" },
+    { "name": "Mike Rose (No More Robots)", "expertise": "Indie publishing, Steam strategy", "platform": "Twitter/X" }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Steam / App Store / Google Play Store Page Optimization (ASO)",
+      "resources": [
+        { "title": "Steamworks Marketing Best Practices", "url": "https://partner.steamgames.com/doc/marketing/bestpractices", "description": "Steam 공식 마케팅 베스트 프랙티스 문서로, 스토어 페이지 최적화의 기본을 다룬다.", "tag": "가이드" },
+        { "title": "Steamworks Visibility on Steam", "url": "https://partner.steamgames.com/doc/marketing/visibility", "description": "Steam이 게임을 노출시키는 알고리즘과 가시성 메커니즘을 공식 설명한 문서.", "tag": "가이드" },
+        { "title": "Steamworks Store Page Description Guide", "url": "https://partner.steamgames.com/doc/store/page/description", "description": "Steam 스토어 페이지 설명 작성법에 대한 공식 가이드라인.", "tag": "가이드" },
+        { "title": "Steamworks Marketing Features & Tools", "url": "https://partner.steamgames.com/doc/marketing/tools", "description": "Steam이 제공하는 마케팅 도구와 기능(위시리스트, 이벤트, 업데이트 라운드 등)을 정리한 공식 문서.", "tag": "도구" },
+        { "title": "Steam Page Analyzer - Optimization Guide", "url": "https://www.steampageanalyzer.com/blog/steam-optimization-guide", "description": "Steam 스토어 페이지를 데이터 기반으로 분석하고 최적화하는 완전 가이드.", "tag": "도구" },
+        { "title": "The Game Marketer - Steam Page Optimization (Revenue-First)", "url": "https://www.thegamemarketer.com/insight-posts/steam-page-optimization", "description": "매출 중심의 Steam 페이지 최적화 전략을 다루는 심층 가이드.", "tag": "가이드" },
+        { "title": "Indie Game Joe - Above-the-Fold Best Practices", "url": "https://indiegamejoe.com/steam-store-page-optimization-above-the-fold-best-practices/", "description": "Steam 스토어 페이지 상단 영역(Above-the-fold) 최적화 실전 팁.", "tag": "가이드" },
+        { "title": "SplitMetrics - Ultimate App Marketer's Guide to Steam", "url": "https://splitmetrics.com/blog/the-ultimate-app-marketers-guide-to-steam/", "description": "모바일 ASO 전문가 관점에서 본 Steam 마케팅 최적화 가이드.", "tag": "가이드" },
+        { "title": "Udonis - Complete ASO Guide 2025", "url": "https://www.blog.udonis.co/mobile-marketing/mobile-apps/complete-guide-to-app-store-optimization", "description": "App Store와 Google Play의 모바일 게임 ASO 전략을 포괄적으로 다룬 가이드.", "tag": "가이드" },
+        { "title": "AppTweak - ASO Strategy Step-by-Step 2026", "url": "https://www.apptweak.com/en/aso-blog/aso-strategy", "description": "2026년 최신 ASO 전략 수립을 위한 단계별 가이드.", "tag": "가이드" },
+        { "title": "App Radar - ASO for Games", "url": "https://appradar.com/blog/app-store-optimization-for-games", "description": "모바일 게임 특화 ASO 전략과 스크린샷, 아이콘, 키워드 최적화 방법.", "tag": "가이드" },
+        { "title": "GameBiz Consulting - ASO Best Practices for Mobile Games", "url": "https://www.gamebizconsulting.com/blog/app-store-optimization-mobile-games-aso-guide", "description": "모바일 게임 개발자를 위한 ASO 베스트 프랙티스와 실전 팁 모음.", "tag": "가이드" },
+        { "title": "AppsFlyer - How to ASO Like a Pro", "url": "https://www.appsflyer.com/blog/measurement-analytics/aso/", "description": "프로 수준의 ASO를 구축하는 방법론과 측정 지표를 다룬 심층 가이드.", "tag": "가이드" },
+        { "title": "Business of Apps - Top ASO Tools 2026", "url": "https://www.businessofapps.com/marketplace/app-store-optimization/aso-tools/", "description": "2026년 최고의 ASO 도구들을 비교 분석한 마켓 리포트.", "tag": "도구" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Game Community Building (Discord, Reddit, Forums)",
+      "resources": [
+        { "title": "The Game Marketer - Discord Community Management for Indie Devs", "url": "https://www.thegamemarketer.com/insight-posts/how-to-manage-your-discord-community-as-an-indie-game-dev", "description": "인디 게임 개발자를 위한 Discord 커뮤니티 관리 실전 가이드.", "tag": "가이드" },
+        { "title": "The Game Marketer - Crafting an Engaging Discord Server", "url": "https://www.thegamemarketer.com/insight-posts/crafting-an-engaging-discord-server-for-your-indie-game-a-comprehensive-guide", "description": "인디 게임을 위한 매력적인 Discord 서버 구축 종합 가이드.", "tag": "가이드" },
+        { "title": "YoYoFuMedia - Indie Community Management Guide", "url": "https://yoyofumedia.com/indie-community-management/", "description": "Discord, Reddit, Twitch를 아우르는 인디 게임 커뮤니티 관리 종합 가이드.", "tag": "가이드" },
+        { "title": "Enjin - Step-by-Step Community Building for Indie Games", "url": "https://enjin.io/blog/indie-game-community-building", "description": "인디 게임 커뮤니티를 처음부터 단계별로 구축하는 방법론.", "tag": "가이드" },
+        { "title": "Xsolla - Discord Servers Game Devs Should Join", "url": "https://accelerator.xsolla.com/blog/discord-servers-that-game-devs-should-join", "description": "게임 개발자가 반드시 가입해야 할 Discord 서버 목록과 각 서버의 특징.", "tag": "커뮤니티" },
+        { "title": "Game Dev Essentials - Top 8 Game Dev Discord Servers", "url": "https://gamedevessentials.com/top-8-game-dev-discord-servers/", "description": "게임 개발자를 위한 최고의 Discord 커뮤니티 서버 8곳을 선별 소개.", "tag": "커뮤니티" },
+        { "title": "Game Developer Marketing - 20 Must-Join Discords for Indie Dev", "url": "https://gamedevelopermarketing.com/indie-game-dev-discords/", "description": "인디 게임 개발 성공을 위해 가입해야 할 Discord 서버 20곳 목록.", "tag": "커뮤니티" },
+        { "title": "Fungies.io - Engaging the Indie Game Community", "url": "https://fungies.io/engaging-the-indie-game-community-maximizing-social-media-impact-and-establishing-a-thriving-discord-server/", "description": "소셜 미디어와 Discord를 활용한 인디 게임 커뮤니티 참여 극대화 전략.", "tag": "가이드" },
+        { "title": "Generalist Programmer - Game Community Management Guide 2025", "url": "https://generalistprogrammer.com/tutorials/game-community-management-complete-engagement-guide-2025", "description": "2025년 게임 커뮤니티 관리의 완전한 참여 가이드.", "tag": "가이드" },
+        { "title": "Victoria Tran - Community Management Portfolio", "url": "https://www.victoriatran.com/portfolio", "description": "Among Us 커뮤니티 디렉터 Victoria Tran의 포트폴리오와 커뮤니티 관리 전문 자료.", "tag": "사례" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Game Press / Media Coverage & PR",
+      "resources": [
+        { "title": "presskit() - Do Press Kit", "url": "https://dopresskit.com/", "description": "개발자가 빠르게 프레스킷을 만들 수 있는 무료 오픈소스 프레스킷 생성 도구.", "tag": "도구" },
+        { "title": "IMPRESS - Press Kitty (Free Press Kit Tool)", "url": "https://impress.games/press-kitty", "description": "무료로 전문적인 게임 프레스킷을 생성할 수 있는 Press Kitty 도구.", "tag": "도구" },
+        { "title": "IMPRESS - Video Game Press Kit Examples", "url": "https://impress.games/video-game-press-kit-examples", "description": "실제 게임 프레스킷 예시 모음으로, 좋은 프레스킷이 어떻게 생겼는지 참고할 수 있다.", "tag": "예시" },
+        { "title": "Indieformer - Press Kit Guide for Indie Games", "url": "https://www.indieformer.com/press-kit-guide", "description": "인디 게임 프레스킷 작성에 필요한 모든 요소를 정리한 가이드.", "tag": "가이드" },
+        { "title": "Disobey - How to Make a Video Game Press Kit (Ultimate Guide)", "url": "https://www.disobey.gg/blog/how-to-make-a-video-game-press-kit-the-ultimate-guide-for-indie-devs", "description": "인디 개발자를 위한 비디오 게임 프레스킷 제작 완전 가이드.", "tag": "가이드" },
+        { "title": "Acorn Games - Indie Dev's Guide to the Perfect Press Kit", "url": "https://acorngames.gg/blog/2024/6/12/the-indie-devs-guide-to-assembling-the-perfect-press-kit", "description": "완벽한 인디 게임 프레스킷을 조립하는 방법에 대한 실전 가이드.", "tag": "가이드" },
+        { "title": "Frowns Marketing - Press Kit Template for Indie Devs", "url": "https://frownsmarketing.com/creating-your-press-kit-as-an-indie-game-developer/", "description": "인디 게임 개발자를 위한 프레스킷 템플릿과 작성 가이드.", "tag": "템플릿" },
+        { "title": "Jaleo PR - How to Create a Good Press Kit", "url": "https://jaleopr.com/blog/create-good-press-kit-indie-game/", "description": "PR 에이전시 관점에서 본 좋은 인디 게임 프레스킷 제작법.", "tag": "가이드" },
+        { "title": "Loopr - Free Video Game Press Release Template", "url": "https://www.loopr.gg/blogs/free-video-game-press-release-template-for-game-developers", "description": "게임 개발자를 위한 무료 프레스 릴리스 템플릿과 작성 가이드.", "tag": "템플릿" },
+        { "title": "Game Developer (Gamasutra) - Marketing & Business Articles", "url": "https://www.gamedeveloper.com/business", "description": "Gamasutra(현 Game Developer)의 게임 비즈니스와 마케팅 관련 아카이브 기사 모음.", "tag": "가이드" },
+        { "title": "Game Developer - 10 Seminal Postmortems Every Dev Should Read", "url": "https://www.gamedeveloper.com/audio/10-seminal-game-postmortems-every-developer-should-read", "description": "모든 개발자가 읽어야 할 10가지 핵심 포스트모템으로, 마케팅 실패와 성공 사례를 포함.", "tag": "사례" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Game Influencers & Streamers (YouTube, Twitch Partnerships)",
+      "resources": [
+        { "title": "Keymailer - Influencer Marketing Platform", "url": "https://keymailer.co/", "description": "50,000명 이상의 인플루언서와 연결하여 게임 키를 배포하고 캠페인을 관리하는 플랫폼.", "tag": "도구" },
+        { "title": "Lurkit - Game Key Campaigns", "url": "https://www.lurkit.gg/solutions/key-campaigns", "description": "게임 키 배포와 크리에이터 캠페인 관리를 위한 인플루언서 마케팅 플랫폼.", "tag": "도구" },
+        { "title": "Cloutboost - Ultimate Guide to Gaming Influencer Marketing 2025", "url": "https://www.cloutboost.com/blog/the-ultimate-guide-to-gaming-influencer-marketing-in-2024", "description": "게임 인플루언서 마케팅의 전략, 예산 책정, ROI 측정을 포괄하는 완전 가이드.", "tag": "가이드" },
+        { "title": "Cloutboost - KeyMailer vs Lurkit vs Terminals vs Woovit Comparison", "url": "https://www.cloutboost.com/blog/keymailer-vs-lurkit-vs-terminals-vs-woovit-whats-the-best-key-distribution-service-for-game-publishers", "description": "주요 게임 키 배포 서비스 4종을 비교 분석한 리뷰 기사.", "tag": "가이드" },
+        { "title": "Game Developer - 6 Ways Indie Devs Find Success with Influencers", "url": "https://www.gamedeveloper.com/business/six-ways-indie-game-developers-find-success-with-youtube-and-twitch-influencers", "description": "인디 개발자가 YouTube와 Twitch 인플루언서와 성공적으로 협업하는 6가지 방법.", "tag": "사례" },
+        { "title": "Famesters - Indie Dev's Guide to YouTube Influencer Marketing", "url": "https://famesters.com/blog/how-to-promote-indie-games-on-youtube/", "description": "인디 게임을 YouTube 인플루언서를 통해 홍보하는 실전 전략 가이드.", "tag": "가이드" },
+        { "title": "TwitchMetrics - Mastering Indie Game Marketing with Influencers", "url": "https://blog.twitchmetrics.net/indie-game-marketing/", "description": "Twitch 데이터 기반으로 인디 게임 인플루언서 마케팅을 마스터하는 방법.", "tag": "가이드" },
+        { "title": "Enjin - Twitch Influencer Marketing Guide for Game Developers", "url": "https://enjin.io/blog/twitch-influencer-marketing-guide-for-game-developers", "description": "게임 개발자를 위한 Twitch 인플루언서 마케팅 종합 가이드.", "tag": "가이드" },
+        { "title": "GameDev.net - Ultimate Guide for Promoting with Twitch Influencers", "url": "https://www.gamedev.net/articles/business/business-and-law/the-ultimate-guide-for-promoting-your-game-with-twitch-influencers-r4897/", "description": "Twitch 인플루언서를 활용한 게임 프로모션 완전 가이드.", "tag": "가이드" },
+        { "title": "Mega Cat Studios - Mastering Influencer Marketing for Game Devs", "url": "https://megacatstudios.com/blogs/game-development/mastering-influencer-marketing-game-developers-guide", "description": "게임 개발자가 인플루언서 마케팅을 마스터하기 위한 실전 전략 가이드.", "tag": "가이드" },
+        { "title": "inBeat Agency - Influencer Marketing for Video Games", "url": "https://inbeat.agency/blog/video-game-influencer-marketing", "description": "비디오 게임 인플루언서 마케팅의 A-Z를 다루는 에이전시 관점 가이드.", "tag": "가이드" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Game Trailers & Visual Assets",
+      "resources": [
+        { "title": "Derek Lieu - How to Make a Trailer (Start Here)", "url": "https://www.derek-lieu.com/start-here", "description": "Among Us, Spelunky 2 등의 트레일러를 만든 Derek Lieu의 게임 트레일러 제작 입문 가이드.", "tag": "가이드" },
+        { "title": "Derek Lieu - Trailer Editing Essays", "url": "https://www.derek-lieu.com/essays", "description": "게임 트레일러 편집에 대한 분석적 에세이 모음으로, 실제 트레일러를 샷별로 분석.", "tag": "가이드" },
+        { "title": "Derek Lieu - The Business of Indie Game Trailers", "url": "https://www.derek-lieu.com/blog/2022/5/31/the-business-of-indie-game-trailers", "description": "인디 게임 트레일러의 비즈니스 측면(비용, 타이밍, ROI)을 다룬 실전 가이드.", "tag": "사례" },
+        { "title": "Video Game Trailer Academy (VGTA)", "url": "https://vgta.teachable.com/", "description": "게임 트레일러 제작의 계획부터 편집까지 체계적으로 배울 수 있는 온라인 코스.", "tag": "코스" },
+        { "title": "Berke Sayil - Ultimate Guide to Indie Video Game Trailers", "url": "https://berkedev.itch.io/ultimate-guide-for-indie-vide-game-trailers", "description": "인디 비디오 게임 트레일러 제작을 위한 종합 가이드 (itch.io 전자책).", "tag": "가이드" },
+        { "title": "Picotion - Game Trailer 101: Complete Guide", "url": "https://picotion.com/blog/game-trailer-complete-guide/", "description": "게임 트레일러 제작의 기초부터 고급 기법까지 다루는 종합 가이드.", "tag": "가이드" },
+        { "title": "Game Developer - How To Record and Post GIFs Showing Your Game", "url": "https://www.gamedeveloper.com/business/how-to-record-and-post-gifs-showing-your-game", "description": "게임 홍보용 GIF를 녹화하고 게시하는 방법에 대한 실전 가이드.", "tag": "가이드" },
+        { "title": "Game Developer - Promoting Your Game With Animated GIFs", "url": "https://www.gamedeveloper.com/business/promoting-your-game-with-animated-gifs", "description": "애니메이션 GIF를 활용한 게임 프로모션 전략과 제작 팁.", "tag": "가이드" },
+        { "title": "Arimia - 5 Free Tools for Indie Game Marketing", "url": "https://arimiadev.com/5-free-tools-for-indie-game-marketing-bonus/", "description": "인디 게임 마케팅을 위한 5가지 무료 도구 소개(GIF, 스크린샷, 트레일러 등).", "tag": "도구" },
+        { "title": "IMPRESS - Steam Wishlists Sales Calculator", "url": "https://impress.games/steam-wishlists-sales-calculator", "description": "Steam 위시리스트 수로 예상 판매량을 계산하는 무료 도구.", "tag": "도구" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Wishlisting & Launch Strategy",
+      "resources": [
+        { "title": "How To Market A Game (Chris Zukowski) - Blog", "url": "https://howtomarketagame.com/blog/", "description": "Chris Zukowski의 게임 마케팅 블로그로, Steam 위시리스트와 런칭 전략의 바이블.", "tag": "가이드" },
+        { "title": "How To Market A Game - Courses", "url": "https://howtomarketagame.com/courses/", "description": "Chris Zukowski의 유료 게임 마케팅 코스(Steam 페이지, 위시리스트, 런칭 전략 등).", "tag": "코스" },
+        { "title": "How To Market A Game - Do Wishlists Get Old?", "url": "https://howtomarketagame.com/2025/01/27/do-wishlists-get-old/", "description": "오래된 위시리스트도 전환이 되는지에 대한 데이터 기반 분석.", "tag": "가이드" },
+        { "title": "Game Oracle - Steam Wishlist to Sales Ratio 2025", "url": "https://www.game-oracle.com/blog/wishlist-to-sales-2025", "description": "2025년 Steam 위시리스트 대비 판매 전환율 데이터와 분석.", "tag": "가이드" },
+        { "title": "GameDiscoverCo - State of Steam Wishlist Conversions 2024-2025", "url": "https://newsletter.gamediscover.co/p/the-state-of-steam-wishlist-conversions", "description": "Simon Carless의 Steam 위시리스트 전환율 현황 분석 뉴스레터.", "tag": "가이드" },
+        { "title": "GameDiscoverCo Newsletter", "url": "https://newsletter.gamediscover.co/", "description": "43,000명 이상이 구독하는 게임 발견성과 마케팅 데이터 분석 뉴스레터.", "tag": "커뮤니티" },
+        { "title": "Cloutboost - How to Market Games on Steam in 2025", "url": "https://www.cloutboost.com/blog/how-to-market-games-on-steam-in-2025-5-things-every-developer-should-know", "description": "2025년 Steam 게임 마케팅에서 알아야 할 5가지 핵심 전략.", "tag": "가이드" },
+        { "title": "Cloutboost - Ultimate Guide to Steam Wishlists & Influencers", "url": "https://www.cloutboost.com/blog/the-ultimate-guide-to-steam-wishlists-and-gaming-influencers", "description": "인플루언서를 활용한 Steam 위시리스트 극대화 전략 가이드.", "tag": "가이드" },
+        { "title": "Game World Observer - What Devs Should Do Before Launching Steam Page", "url": "https://gameworldobserver.com/2025/03/11/steam-page-launch-guide-wishlists-zukowski", "description": "Steam 페이지 론칭 전 개발자가 반드시 해야 할 위시리스트 준비 사항.", "tag": "가이드" },
+        { "title": "Indie Game Business - Marketing Strategies for Indie Game Success", "url": "https://indiegamebusiness.com/marketing-strategies-for-indie-game/", "description": "인디 게임 성공을 위한 검증된 마케팅 전략과 팁 모음.", "tag": "가이드" },
+        { "title": "GAM3S.GG - How to Market Your Game in 2026", "url": "https://gam3s.gg/news/how-to-market-your-game-2026/", "description": "2026년 게임 마케팅 트렌드와 전략을 종합 정리한 완전 가이드.", "tag": "가이드" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Game Festivals & Events",
+      "resources": [
+        { "title": "Steamworks - Steam Sales and Events Schedule 2026", "url": "https://steamcommunity.com/groups/steamworks/announcements/detail/532102384016426892", "description": "2026년 상반기 Steam 세일 및 이벤트 공식 일정표.", "tag": "가이드" },
+        { "title": "Steam Next Fest Official Page", "url": "https://store.steampowered.com/sale/nextfest", "description": "Steam Next Fest 공식 페이지로, 참가 방법과 일정을 확인할 수 있다.", "tag": "도구" },
+        { "title": "Big Games Machine - Steam Next Fest Marketing: 11 Strategies", "url": "https://www.biggamesmachine.com/steam-next-fest-marketing-strategies/", "description": "Steam Next Fest에서 성공하기 위한 11가지 마케팅 전략.", "tag": "가이드" },
+        { "title": "How To Market A Game - Steam Next Fest October 2025 Analysis", "url": "https://howtomarketagame.com/2025/10/20/steam-next-fest-october-2025-checking-in-on-the-games-that-broke-through/", "description": "2025년 10월 Steam Next Fest에서 돌파한 게임들의 성공 사례 분석.", "tag": "사례" },
+        { "title": "GameDiscoverCo - Who Won February 2026 Steam Next Fest?", "url": "https://newsletter.gamediscover.co/p/who-won-february-2026s-steam-next", "description": "2026년 2월 Steam Next Fest 우승 게임 분석과 데이터 리포트.", "tag": "사례" },
+        { "title": "GamesRadar - Steam Next Fest 2026 Complete Guide", "url": "https://www.gamesradar.com/games/steam-next-fest-guide/", "description": "Steam Next Fest의 모든 날짜, 세부 정보, 참가 방법을 정리한 종합 가이드.", "tag": "가이드" },
+        { "title": "GDC Festival of Gaming - Official Site", "url": "https://gdconf.com/", "description": "세계 최대 게임 개발자 컨퍼런스 GDC 공식 사이트.", "tag": "커뮤니티" },
+        { "title": "GDC Vault - Free Talks", "url": "https://gdcvault.com/free", "description": "GDC 강연을 무료로 시청할 수 있는 GDC Vault 무료 섹션.", "tag": "영상" },
+        { "title": "GDC Vault - Free GDC 2024 Content", "url": "https://gdcvault.com/free/gdc-24/", "description": "2024년 GDC 무료 공개 세션 모음(마케팅 트랙 포함).", "tag": "영상" },
+        { "title": "Steamworks - Update Visibility Rounds", "url": "https://partner.steamgames.com/doc/marketing/visibility/update_rounds", "description": "업데이트 가시성 라운드를 활용한 출시 후 마케팅 전략 공식 문서.", "tag": "가이드" },
+        { "title": "IndieGame.com - Battle of 3,500 Demos (Steam Next Fest 2026)", "url": "https://indiegame.com/en/archives/22704", "description": "2026년 Steam Next Fest에서 3,500개 데모 중 어떤 인디 게임이 성공했는지 분석.", "tag": "사례" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Mobile Game UA & Ads",
+      "resources": [
+        { "title": "Udonis - Mobile Game User Acquisition Strategy 2025", "url": "https://www.blog.udonis.co/mobile-marketing/mobile-games/user-acquisition-strategy-mobile-games", "description": "2025년 모바일 게임 유저 획득 전략의 완전 가이드(CPI, LTV, ROAS 포함).", "tag": "가이드" },
+        { "title": "Upptic - Mobile Game UA Growth Guide", "url": "https://upptic.com/mobile-game-user-acquisition-growth-guide/", "description": "모바일 게임 유저 획득과 성장을 위한 종합 전략 가이드.", "tag": "가이드" },
+        { "title": "Segwise - Understanding User Acquisition in Mobile Gaming", "url": "https://segwise.ai/blog/user-acquisition-mobile-ua-gaming", "description": "모바일 게임 UA의 기본 개념부터 고급 전략까지 이해하는 가이드.", "tag": "가이드" },
+        { "title": "Segwise - Creative Testing for Mobile Game UA", "url": "https://segwise.ai/blog/creative-testing-mobile-game-user-acquisition-guide", "description": "모바일 게임 UA를 위한 크리에이티브 테스팅 완전 가이드.", "tag": "가이드" },
+        { "title": "TyrAds - Ultimate Mobile Game UA Strategy 2025", "url": "https://tyrads.com/mobile-game-user-acquisition-strategy/", "description": "2025년 모바일 게임 UA의 궁극적 전략 가이드.", "tag": "가이드" },
+        { "title": "Press For Play - Best Practices in UA for Mobile Games 2025", "url": "https://pressforplay.com/marketing/best-practices-in-user-acquisition-for-mobile-games-2025/", "description": "2025년 모바일 게임 UA 베스트 프랙티스와 최신 트렌드.", "tag": "가이드" },
+        { "title": "Business of Apps - Mobile Gaming Marketing Trends 2026", "url": "https://www.businessofapps.com/insights/mobile-gaming-marketing-trends-whitepaper-2026", "description": "2026년 모바일 게임 마케팅 트렌드 백서.", "tag": "가이드" },
+        { "title": "PocketGamer - 2025 Mobile Game UA Landscape Report", "url": "https://www.pocketgamer.biz/the-2025-mobile-game-ua-landscape-inside-xmp-and-insightrackrs-newest-report-7532736/", "description": "2025년 모바일 게임 UA 환경에 대한 XMP & Insightrackr의 최신 리포트.", "tag": "가이드" },
+        { "title": "Adjoe - Optimize UA Campaigns with Playtime 2025", "url": "https://adjoe.io/blog/5-ways-to-optimize-your-user-acquisition-campaigns-with-playtime/", "description": "플레이타임 기반 UA 캠페인 최적화 5가지 방법.", "tag": "가이드" },
+        { "title": "Adjust - Live-ops for Mobile Games Strategy", "url": "https://www.adjust.com/blog/what-is-live-ops/", "description": "모바일 게임 라이브옵스 전략과 베스트 프랙티스 가이드.", "tag": "가이드" },
+        { "title": "Adjust - App Store Optimization Guide", "url": "https://www.adjust.com/resources/guides/app-store-optimization/", "description": "Adjust의 앱 스토어 최적화(ASO) 기본 가이드.", "tag": "가이드" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Social Media for Games (Twitter/X, TikTok, Instagram)",
+      "resources": [
+        { "title": "How To Market A Game - 7 Tips for Marketing on TikTok", "url": "https://howtomarketagame.com/2022/02/07/seven-great-tips-for-marketing-your-indie-game-on-tiktok/", "description": "Chris Zukowski의 인디 게임 TikTok 마케팅 7가지 실전 팁.", "tag": "가이드" },
+        { "title": "5W PR - Game Marketing on Social Media 2025", "url": "https://www.5wpr.com/new/game-marketing-on-social-media-in-2025-building-interactive-campaigns-for-indie-success/", "description": "2025년 소셜 미디어에서 인디 게임을 위한 인터랙티브 캠페인 구축 전략.", "tag": "가이드" },
+        { "title": "Acorn Games - Using Social Media as an Indie Game Developer", "url": "https://acorngames.gg/blog/2024/1/11/using-social-media-as-an-indie-game-developer", "description": "인디 게임 개발자의 소셜 미디어 활용 실전 가이드.", "tag": "가이드" },
+        { "title": "Battenhall - Guide to Social Media for Indie Game Publishers", "url": "https://www.battenhall.com/blog/a-guide-to-social-media-for-indie-game-publishers", "description": "인디 게임 퍼블리셔를 위한 소셜 미디어 전략 가이드.", "tag": "가이드" },
+        { "title": "Enjin - 10 Social Media Marketing Tips for Indie Game Developers", "url": "https://enjin.io/blog/10-social-media-marketing-tips-for-indie-game-developers", "description": "인디 게임 개발자를 위한 소셜 미디어 마케팅 10가지 핵심 팁.", "tag": "가이드" },
+        { "title": "Mister Morris Games - Build an Audience on Social Media", "url": "https://mister-morris-games.medium.com/how-to-build-an-audience-for-your-game-as-an-indie-developer-on-social-media-625721401886", "description": "인디 개발자가 소셜 미디어에서 게임 오디언스를 구축하는 방법론.", "tag": "가이드" },
+        { "title": "Kevin Scolaro - Ultimate Guide: Top Indie Game Marketing Strategies", "url": "https://kevinscolaro.com/ultimate-guide-top-indie-game-marketing-strategies", "description": "인디 게임 마케팅 전략의 종합 가이드(소셜 미디어 중심).", "tag": "가이드" },
+        { "title": "OnlySocial - Practical Social Media Strategies for Indie Devs", "url": "https://onlysocial.io/practical-social-media-strategies-for-indie-game-developers/", "description": "인디 게임 개발자를 위한 실용적인 소셜 미디어 전략과 도구.", "tag": "가이드" },
+        { "title": "ClearTap - How to Market an Indie Game: 10-Step Strategy", "url": "https://clevertap.com/blog/indie-game-marketing/", "description": "인디 게임 마케팅을 위한 10단계 전략 가이드(소셜 미디어 포함).", "tag": "가이드" },
+        { "title": "Victoria Tran - About (Community & Social Expert)", "url": "https://www.victoriatran.com/about", "description": "Among Us의 커뮤니케이션 디렉터 Victoria Tran의 소셜 미디어 및 커뮤니티 전문 프로필.", "tag": "사례" },
+        { "title": "Victoria Tran - Medium Blog", "url": "https://thevtran.medium.com/", "description": "Victoria Tran의 게임 커뮤니티 관리와 소셜 미디어 전략에 대한 개인 블로그.", "tag": "가이드" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Live Service & Retention",
+      "resources": [
+        { "title": "InAppStory - Live Service Games: Strategic Marketing Playbook", "url": "https://inappstory.com/blog/live-service-games", "description": "라이브 서비스 게임의 마케팅 전략 플레이북으로, 시즌과 이벤트 기획을 포함.", "tag": "가이드" },
+        { "title": "AMT Lab - Live Service Games: Consumer Engagement & Retention", "url": "https://amt-lab.org/blog/2025/3/live-service-games-part-ii", "description": "라이브 서비스 게임의 소비자 참여와 리텐션에 대한 학술적 분석.", "tag": "가이드" },
+        { "title": "GameAnalytics - Player-Centric LiveOps Lessons", "url": "https://www.gameanalytics.com/blog/player-centric-liveops", "description": "성공적인 라이브 서비스 게임 운영에서 배운 플레이어 중심 라이브옵스 전략.", "tag": "사례" },
+        { "title": "Magic Media - What Are Live Service Games? (2026 Guide)", "url": "https://magicmedia.studio/news-insights/what-are-live-service-games/", "description": "2026년 라이브 서비스 게임의 정의, 현황, 전략을 종합 정리한 가이드.", "tag": "가이드" },
+        { "title": "Thundercloud Studio - GaaS Model and Future of Gaming", "url": "https://thundercloud-studio.com/article/what-are-live-service-games-and-how-game-as-a-service-gaas-model-can-shift-the-future-of-gaming-industry/", "description": "GaaS(Games as a Service) 모델이 게임 산업의 미래를 어떻게 바꾸는지 분석.", "tag": "가이드" },
+        { "title": "Adjoe - Mobile Gamer Seasonality for UA Strategy", "url": "https://adjoe.io/blog/leverage-mobile-gamer-seasonality-ua-strategy/", "description": "모바일 게이머의 시즌성을 활용한 UA 전략 가이드.", "tag": "가이드" },
+        { "title": "Game Wisdom - Design Variety with Live Service Games", "url": "https://game-wisdom.com/critical/live-service-games", "description": "라이브 서비스 게임의 디자인 다양성과 콘텐츠 업데이트 전략 분석.", "tag": "가이드" },
+        { "title": "Devolver Digital Blog", "url": "https://www.devolverdigital.com/blog", "description": "Devolver Digital의 공식 블로그로, 출시 후 마케팅과 지속적 운영 사례를 포함.", "tag": "사례" },
+        { "title": "Game Developer - Devolver Digital's Marketing Advice", "url": "https://www.gamedeveloper.com/marketing/devolver-digital-s-marketing-advice-let-the-people-play", "description": "사람들에게 플레이하게 하라 - Devolver Digital의 마케팅 철학과 전략.", "tag": "사례" },
+        { "title": "Prolific Studio - What Makes Live Service Games In-Demand", "url": "https://prolificstudio.co/blog/live-service-games/", "description": "라이브 서비스 게임이 인기를 끄는 이유와 핵심 성공 요인 분석.", "tag": "가이드" }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Publishers & Funding",
+      "resources": [
+        { "title": "FirstLook.gg - 50+ Indie Game Publishers That Fund Games", "url": "https://firstlook.gg/blog/indie-game-publishers/", "description": "독립 게임에 투자하는 50개 이상의 인디 게임 퍼블리셔 목록.", "tag": "가이드" },
+        { "title": "Indie Game Business - 2026 Video Game Publisher List", "url": "https://indiegamebusiness.com/publisher-list/", "description": "2026년 비디오 게임 퍼블리셔 종합 목록과 연락처 정보.", "tag": "도구" },
+        { "title": "Udonis - 50+ Indie Game Publishers Accepting Submissions", "url": "https://www.blog.udonis.co/mobile-marketing/mobile-games/indie-game-publishers", "description": "현재 제출을 받고 있는 50개 이상의 인디 게임 퍼블리셔 목록과 특징.", "tag": "가이드" },
+        { "title": "Indie Game Business - How to Get Your Game Funded & Published", "url": "https://indiegamebusiness.com/how-to-get-your-indie-game-funded-and-published-peter-kojesta/", "description": "인디 게임 펀딩과 퍼블리싱을 받는 방법에 대한 Peter Kojesta의 실전 가이드.", "tag": "가이드" },
+        { "title": "Entalto Studios - How to Find the Right Publisher (2026 Guide)", "url": "https://entaltostudios.com/find-right-publisher-indie-game/", "description": "2026년 인디 게임에 맞는 퍼블리셔를 찾는 방법 종합 가이드.", "tag": "가이드" },
+        { "title": "GameFromScratch - Indie Game Publishing and Funding Resources", "url": "https://gamefromscratch.com/indie-game-publishing-and-funding-resources/", "description": "인디 게임 퍼블리싱과 펀딩 관련 리소스 종합 모음.", "tag": "가이드" },
+        { "title": "GameMaker - Indie Game Publishing 2025: Tips from Akupara Games", "url": "https://gamemaker.io/en/blog/indie-game-publishing-2025", "description": "Akupara Games의 인디 게임 퍼블리싱 팁과 조언 (2025).", "tag": "사례" },
+        { "title": "Wardrome - Navigating the Indie Game Funding Landscape 2025", "url": "https://wardrome.com/navigating-the-indie-game-funding-landscape-in-2025/", "description": "2025년 인디 게임 펀딩 환경을 탐색하는 방법(킥스타터, 투자자, 보조금 등).", "tag": "가이드" },
+        { "title": "Devolver Digital - Game Pitch Submission", "url": "https://pitch.devolverdigital.com/", "description": "Devolver Digital에 게임 피치를 제출할 수 있는 공식 페이지.", "tag": "도구" },
+        { "title": "Game Developer - No More Robots on State of Indie Publishing", "url": "https://www.gamedeveloper.com/business/-this-is-just-a-death-cycle-no-more-robots-gets-candid-about-the-state-of-indie-publishing", "description": "No More Robots가 솔직하게 말하는 인디 퍼블리싱의 현실과 과제.", "tag": "사례" },
+        { "title": "Polydin - Top 10 Indie Game Publishers 2025", "url": "https://polydin.com/indie-game-publishers-in-2025/", "description": "2025년 최고의 인디 게임 퍼블리셔 10곳을 선정하고 특징을 비교 분석.", "tag": "가이드" },
+        { "title": "Xsolla Accelerator - How to Market a Game (Chris Zukowski)", "url": "https://accelerator.xsolla.com/blog/howtomarketagame", "description": "Xsolla Accelerator에서 정리한 Chris Zukowski의 게임 마케팅 핵심 요약.", "tag": "가이드" },
+        { "title": "Outersloth - Contract Terms & Game Funding Lessons", "url": "https://www.gamedeveloper.com/production/outersloth-shares-contract-terms-and-game-funding-lessons-for-sickos", "description": "Among Us 제작사의 인디 게임 펀딩 브랜드 Outersloth의 계약 조건과 펀딩 교훈.", "tag": "사례" }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Game Localization & Regional Marketing",
+      "resources": [
+        { "title": "Lokalise - Game Localization Guide", "url": "https://lokalise.com/blog/game-localization/", "description": "게임 로컬라이제이션의 정의, 중요성, Lokalise 도구를 활용한 방법론.", "tag": "가이드" },
+        { "title": "Lokalise - Game Localization Solution", "url": "https://lokalise.com/solutions/game-localization/", "description": "게임 로컬라이제이션을 위한 Lokalise 플랫폼 소개 및 기능 설명.", "tag": "도구" },
+        { "title": "LocalizeDirect - 4 Best Practices for Indie Developers", "url": "https://www.localizedirect.com/posts/indie-game-localization-best-practices", "description": "인디 개발자를 위한 게임 로컬라이제이션 4가지 베스트 프랙티스.", "tag": "가이드" },
+        { "title": "XTM Cloud - Gaming Localization: Definition, Benefits, How to Start", "url": "https://xtm.cloud/blog/gaming-localization/", "description": "게임 로컬라이제이션의 정의, 장점, 시작 방법, 그리고 흔한 실수들.", "tag": "가이드" },
+        { "title": "Language Connections - 4 Ways Localization Helps Indie Games", "url": "https://www.languageconnections.com/blog/4-ways-indie-games-benefit-from-game-localization/", "description": "인디 게임이 로컬라이제이션을 통해 얻는 4가지 핵심 이점.", "tag": "가이드" },
+        { "title": "Terra Localizations", "url": "https://terralocalizations.com/", "description": "게임 전문 로컬라이제이션 서비스 업체 Terra Localizations 공식 사이트.", "tag": "도구" },
+        { "title": "Pangea Global - How Indie Games Achieve Global Fame Through Localization", "url": "https://www.pangea.global/blog/how-indie-games-achieve-global-fame-through-localization/", "description": "인디 게임이 로컬라이제이션을 통해 글로벌 명성을 얻는 방법과 사례.", "tag": "사례" },
+        { "title": "VerboLabs - How Game Localization Boosts Indie Games", "url": "https://www.verbolabs.com/how-game-localization-boosts-indie-games/", "description": "게임 로컬라이제이션이 인디 게임의 다운로드와 매출을 증가시키는 방법.", "tag": "가이드" },
+        { "title": "GAMES.GG - Mobile Game Localization for Global Audiences", "url": "https://games.gg/news/mobile-game-localization-how-to-adapt-games-for-global-audiences/", "description": "모바일 게임을 글로벌 오디언스에 맞게 적응시키는 로컬라이제이션 가이드.", "tag": "가이드" },
+        { "title": "BLEND - Gaming Localization Services", "url": "https://www.getblend.com/gaming-localization/", "description": "게임 산업을 위한 전문 로컬라이제이션 서비스 소개.", "tag": "도구" }
+      ]
+    }
+  ],
+  "bonus": {
+    "name": "Comprehensive Resources & Learning Hubs",
+    "resources": [
+      { "title": "How To Market A Game (Chris Zukowski) - Main Site", "url": "https://howtomarketagame.com/", "description": "게임 마케팅의 바이블로, Steam 알고리즘, 위시리스트, 이메일 마케팅 전문.", "tag": "커뮤니티" },
+      { "title": "Game If You Are - Indie Game Marketing 101", "url": "https://gameifyouare.com/2019/05/15/indie-game-marketing-101-part-1-a-beginners-guide-to-games-marketing/", "description": "인디 게임 마케팅 입문자를 위한 단계별 가이드 시리즈.", "tag": "가이드" },
+      { "title": "GDC Podcast - Super Practical Indie Game Marketing (Chris Zukowski)", "url": "https://www.gamedeveloper.com/marketing/super-practical-indie-game-marketing-with-chris-zukowski---gdc-podcast-ep-24", "description": "GDC 팟캐스트에서 Chris Zukowski와 나눈 실전 인디 게임 마케팅 대화.", "tag": "영상" },
+      { "title": "Derek Lieu Creative - Main Site", "url": "https://www.derek-lieu.com", "description": "게임 트레일러 전문 에디터 Derek Lieu의 메인 사이트(가이드, 에세이, 케이스 스터디).", "tag": "가이드" },
+      { "title": "Victoria Tran - GDC Speaker Profile", "url": "https://schedule.gdconf.com/speaker/tran-victoria/51355", "description": "Victoria Tran의 GDC 강연 이력과 프로필(커뮤니티 관리, 마케팅 실수).", "tag": "영상" },
+      { "title": "GDC - Improve Community Strategies (Victoria Tran 2021 Talk)", "url": "https://gdconf.com/news/improve-your-community-strategies-victoria-tran%E2%80%99s-gdc-2021-talk", "description": "Victoria Tran의 GDC 2021 커뮤니티 전략 개선 강연 안내.", "tag": "영상" },
+      { "title": "Pro Game Marketing", "url": "https://www.progamemarketing.com/", "description": "전문 게임 마케팅 리소스와 서비스를 제공하는 사이트.", "tag": "가이드" },
+      { "title": "Lumi Consulting - Games Marketing Course", "url": "https://www.lumiconsulting.com/games-marketing-course/", "description": "게임 마케팅 전문 컨설팅 업체의 체계적인 온라인 코스.", "tag": "코스" },
+      { "title": "Udemy - Game Marketing Courses Collection", "url": "https://www.udemy.com/topic/game-marketing/", "description": "Udemy의 게임 마케팅 관련 온라인 코스 모음 페이지.", "tag": "코스" },
+      { "title": "PC Gamer - How Devolver Digital is Redefining Publishing", "url": "https://www.pcgamer.com/how-devolver-digital-is-redefining-videogame-publishing/", "description": "Devolver Digital이 비디오 게임 퍼블리싱을 어떻게 재정의하고 있는지 분석한 기사.", "tag": "사례" }
+    ]
+  },
+  "summary": {
+    "totalResources": 143,
+    "categoryCounts": {
+      "1_store_page_optimization": 14,
+      "2_community_building": 10,
+      "3_press_media_pr": 11,
+      "4_influencers_streamers": 11,
+      "5_trailers_visual_assets": 10,
+      "6_wishlisting_launch": 11,
+      "7_festivals_events": 11,
+      "8_mobile_ua_ads": 11,
+      "9_social_media": 11,
+      "10_live_service_retention": 10,
+      "11_publishers_funding": 13,
+      "12_localization": 10,
+      "bonus_learning_hubs": 10
+    }
+  }
+}

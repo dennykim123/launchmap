@@ -3,8 +3,37 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { categories } from "@/data/categories";
+import { gameCategories } from "@/data/game-categories";
 import ThemeToggle from "./ThemeToggle";
 import Search from "./Search";
+
+const gamePhases = [
+  {
+    label: "개발 중",
+    icon: "🎯",
+    slugs: ["game-community", "game-social", "game-trailer"],
+  },
+  {
+    label: "런칭 준비",
+    icon: "🚀",
+    slugs: [
+      "game-store-optimization",
+      "game-press",
+      "game-wishlist",
+      "game-festival",
+    ],
+  },
+  {
+    label: "출시 후",
+    icon: "📈",
+    slugs: ["game-influencer", "game-ua", "game-live-service"],
+  },
+  {
+    label: "스케일",
+    icon: "🌍",
+    slugs: ["game-publisher", "game-localization"],
+  },
+];
 
 const phases = [
   {
@@ -87,12 +116,17 @@ export default function Sidebar() {
           저장된 플랜
         </Link>
 
-        {/* Phase-grouped categories */}
+        {/* SaaS/App categories */}
+        <div className="pt-3 pb-1 px-3">
+          <span className="text-[10px] font-bold text-muted uppercase tracking-wider">
+            SaaS / 앱
+          </span>
+        </div>
         {phases.map((phase) => (
           <div key={phase.label}>
-            <div className="pt-3 pb-1 px-3 flex items-center gap-1.5">
-              <span className="text-xs">{phase.icon}</span>
-              <span className="text-[10px] font-semibold text-muted uppercase tracking-wider">
+            <div className="pt-2 pb-0.5 px-3 flex items-center gap-1.5">
+              <span className="text-[10px]">{phase.icon}</span>
+              <span className="text-[10px] font-semibold text-muted tracking-wider">
                 {phase.label}
               </span>
             </div>
@@ -104,7 +138,45 @@ export default function Sidebar() {
                 <Link
                   key={slug}
                   href={`/category/${slug}`}
-                  className={`block px-3 py-1.5 text-sm rounded-md transition-all ${
+                  className={`block px-3 py-1 text-sm rounded-md transition-all ${
+                    isActive
+                      ? "bg-accent/10 text-accent-light font-medium"
+                      : "text-muted hover:text-foreground hover:bg-card-hover"
+                  }`}
+                >
+                  {cat.title}
+                </Link>
+              );
+            })}
+          </div>
+        ))}
+
+        {/* Game categories */}
+        <div className="pt-4 pb-1 px-3">
+          <Link
+            href="/game"
+            className="text-[10px] font-bold text-muted uppercase tracking-wider hover:text-foreground transition-colors"
+          >
+            🎮 게임 마케팅
+          </Link>
+        </div>
+        {gamePhases.map((phase) => (
+          <div key={phase.label}>
+            <div className="pt-2 pb-0.5 px-3 flex items-center gap-1.5">
+              <span className="text-[10px]">{phase.icon}</span>
+              <span className="text-[10px] font-semibold text-muted tracking-wider">
+                {phase.label}
+              </span>
+            </div>
+            {phase.slugs.map((slug) => {
+              const cat = gameCategories.find((c) => c.slug === slug);
+              if (!cat) return null;
+              const isActive = pathname === `/game/${slug}`;
+              return (
+                <Link
+                  key={slug}
+                  href={`/game/${slug}`}
+                  className={`block px-3 py-1 text-sm rounded-md transition-all ${
                     isActive
                       ? "bg-accent/10 text-accent-light font-medium"
                       : "text-muted hover:text-foreground hover:bg-card-hover"
