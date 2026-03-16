@@ -23,11 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: Params;
-}) {
+export default async function CategoryPage({ params }: { params: Params }) {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
   if (!category) notFound();
@@ -39,7 +35,7 @@ export default async function CategoryPage({
 
   const totalResources = category.sections.reduce(
     (total, sec) => total + sec.resources.length,
-    0
+    0,
   );
 
   return (
@@ -107,7 +103,13 @@ export default async function CategoryPage({
                         </p>
                       )}
                       <p className="text-xs text-muted/50 mt-1 truncate">
-                        {new URL(resource.url).hostname}
+                        {(() => {
+                          try {
+                            return new URL(resource.url).hostname;
+                          } catch {
+                            return resource.url;
+                          }
+                        })()}
                       </p>
                     </div>
                   </a>

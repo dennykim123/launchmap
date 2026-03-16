@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { categories } from "@/data/categories";
+import ThemeToggle from "@/components/ThemeToggle";
+import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,8 +22,7 @@ export const metadata: Metadata = {
     "SaaS, 앱, 스타트업의 첫 10 / 100 / 1,000명 유저를 확보하기 위한 실전 마케팅 가이드",
   openGraph: {
     title: "LaunchMap - 스타트업 마케팅 로드맵",
-    description:
-      "예산 없이 초기 유저를 확보하는 실전 마케팅 전략 모음",
+    description: "예산 없이 초기 유저를 확보하는 실전 마케팅 전략 모음",
     type: "website",
   },
 };
@@ -32,7 +33,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var theme = localStorage.getItem('launchmap-theme');
+                if (theme === 'light') {
+                  document.documentElement.classList.remove('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -45,23 +60,27 @@ export default function RootLayout({
                   LaunchMap
                 </span>
               </Link>
-              <nav className="hidden md:flex items-center gap-1">
-                {categories.slice(0, 6).map((cat) => (
+              <div className="flex items-center gap-1">
+                <nav className="hidden md:flex items-center gap-1">
+                  {categories.slice(0, 6).map((cat) => (
+                    <Link
+                      key={cat.slug}
+                      href={`/category/${cat.slug}`}
+                      className="px-3 py-1.5 text-sm text-muted hover:text-foreground hover:bg-card rounded-md transition-all"
+                    >
+                      {cat.emoji} {cat.title}
+                    </Link>
+                  ))}
                   <Link
-                    key={cat.slug}
-                    href={`/category/${cat.slug}`}
-                    className="px-3 py-1.5 text-sm text-muted hover:text-foreground hover:bg-card rounded-md transition-all"
+                    href="/#all"
+                    className="px-3 py-1.5 text-sm text-accent-light hover:text-accent hover:bg-card rounded-md transition-all"
                   >
-                    {cat.emoji} {cat.title}
+                    전체 보기
                   </Link>
-                ))}
-                <Link
-                  href="/#all"
-                  className="px-3 py-1.5 text-sm text-accent-light hover:text-accent hover:bg-card rounded-md transition-all"
-                >
-                  전체 보기
-                </Link>
-              </nav>
+                </nav>
+                <ThemeToggle />
+                <MobileNav />
+              </div>
             </div>
           </header>
 

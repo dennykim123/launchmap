@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
+/* Light mode (default) */
 :root {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-hover: #f4f4f5;
+  --border: #e4e4e7;
+  --accent: #7c3aed;
+  --accent-light: #6d28d9;
+  --muted: #71717a;
+}
+
+/* Dark mode */
+.dark {
   --background: #0a0a0f;
   --foreground: #e4e4e7;
   --card: #16161d;
@@ -28,6 +41,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 a {
@@ -39,19 +53,19 @@ a {
   color: white;
 }
 
-::-webkit-scrollbar {
+.dark ::-webkit-scrollbar {
   width: 6px;
 }
 
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: var(--background);
 }
 
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
 }
