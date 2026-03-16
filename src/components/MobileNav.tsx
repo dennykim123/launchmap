@@ -47,6 +47,14 @@ export default function MobileNav() {
             >
               홈
             </Link>
+            <Link
+              href="/plan"
+              onClick={() => setOpen(false)}
+              className="block px-3 py-2 text-sm rounded-md font-medium text-white transition-all"
+              style={{ backgroundColor: "#7c3aed" }}
+            >
+              AI 마케팅 플랜
+            </Link>
             {categories.map((cat) => {
               const isActive = pathname === `/category/${cat.slug}`;
               return (

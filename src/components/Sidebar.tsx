@@ -32,6 +32,16 @@ export default function Sidebar() {
           홈
         </Link>
 
+        <Link
+          href="/plan"
+          className={`block px-3 py-2 text-sm rounded-md font-medium transition-all ${
+            pathname === "/plan" ? "text-white" : "text-white hover:opacity-90"
+          }`}
+          style={{ backgroundColor: "#7c3aed" }}
+        >
+          AI 마케팅 플랜
+        </Link>
+
         <div className="pt-3 pb-1 px-3">
           <span className="text-xs font-medium text-muted uppercase tracking-wider">
             카테고리
