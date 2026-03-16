@@ -89,7 +89,10 @@ export default function PlanPage() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          analysis: analysisData?.analysis || null,
+        }),
       });
       const data = await res.json();
       if (data.error) {
@@ -153,7 +156,9 @@ export default function PlanPage() {
             type="url"
             value={analyzeUrl}
             onChange={(e) => setAnalyzeUrl(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAnalyze())}
+            onKeyDown={(e) =>
+              e.key === "Enter" && (e.preventDefault(), handleAnalyze())
+            }
             placeholder="https://apps.apple.com/... 또는 제품 URL"
             className="flex-1 px-3 py-2 text-sm border border-border rounded-lg bg-background text-foreground focus:outline-none focus:border-accent"
           />
@@ -174,36 +179,50 @@ export default function PlanPage() {
           {/* Header */}
           <div className="p-5 border-b border-border">
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs px-2 py-0.5 rounded-full border" style={{ borderColor: "#7c3aed", color: "#7c3aed" }}>
+              <span
+                className="text-xs px-2 py-0.5 rounded-full border"
+                style={{ borderColor: "#7c3aed", color: "#7c3aed" }}
+              >
                 {analysisData.detected}
               </span>
               <span className="text-xs px-2 py-0.5 rounded-full border border-border text-muted">
                 {a.category}
               </span>
             </div>
-            <h2 className="text-xl font-bold mb-1">{analysisData.productName}</h2>
+            <h2 className="text-xl font-bold mb-1">
+              {analysisData.productName}
+            </h2>
             <p className="text-sm text-muted">{a.oneLiner}</p>
           </div>
 
           {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border">
             <div className="p-5">
-              <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">비즈니스 모델</h3>
+              <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
+                비즈니스 모델
+              </h3>
               <p className="text-sm font-medium">{a.businessModel}</p>
               <p className="text-xs text-muted mt-1">{a.pricing}</p>
             </div>
             <div className="p-5">
-              <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">시장 규모</h3>
+              <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
+                시장 규모
+              </h3>
               <p className="text-sm">{a.marketSize}</p>
             </div>
           </div>
 
           {/* Core Features */}
           <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">핵심 기능</h3>
+            <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
+              핵심 기능
+            </h3>
             <div className="flex flex-wrap gap-2">
               {a.coreFeatures.map((f, i) => (
-                <span key={i} className="text-xs px-2.5 py-1 rounded-lg border border-border text-foreground">
+                <span
+                  key={i}
+                  className="text-xs px-2.5 py-1 rounded-lg border border-border text-foreground"
+                >
                   {f}
                 </span>
               ))}
@@ -212,16 +231,23 @@ export default function PlanPage() {
 
           {/* Unique Value */}
           <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">차별화 포인트</h3>
+            <h3 className="text-xs font-semibold text-muted mb-2 uppercase tracking-wider">
+              차별화 포인트
+            </h3>
             <p className="text-sm">{a.uniqueValue}</p>
           </div>
 
           {/* Competitors */}
           <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">경쟁 제품</h3>
+            <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
+              경쟁 제품
+            </h3>
             <div className="flex flex-wrap gap-2">
               {a.competitors.map((c, i) => (
-                <span key={i} className="text-xs px-2.5 py-1 rounded-lg border border-border text-muted">
+                <span
+                  key={i}
+                  className="text-xs px-2.5 py-1 rounded-lg border border-border text-muted"
+                >
                   {c}
                 </span>
               ))}
@@ -231,7 +257,12 @@ export default function PlanPage() {
           {/* Strengths / Weaknesses */}
           <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border">
             <div className="p-5">
-              <h3 className="text-xs font-semibold mb-3 uppercase tracking-wider" style={{ color: "#16a34a" }}>강점</h3>
+              <h3
+                className="text-xs font-semibold mb-3 uppercase tracking-wider"
+                style={{ color: "#16a34a" }}
+              >
+                강점
+              </h3>
               <ul className="space-y-1.5">
                 {a.strengths.map((s, i) => (
                   <li key={i} className="text-sm flex gap-2">
@@ -241,7 +272,12 @@ export default function PlanPage() {
               </ul>
             </div>
             <div className="p-5">
-              <h3 className="text-xs font-semibold mb-3 uppercase tracking-wider" style={{ color: "#dc2626" }}>약점 / 리스크</h3>
+              <h3
+                className="text-xs font-semibold mb-3 uppercase tracking-wider"
+                style={{ color: "#dc2626" }}
+              >
+                약점 / 리스크
+              </h3>
               <ul className="space-y-1.5">
                 {a.weaknesses.map((w, i) => (
                   <li key={i} className="text-sm flex gap-2">
@@ -255,18 +291,29 @@ export default function PlanPage() {
           {/* Marketing Channels */}
           <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border border-t border-border">
             <div className="p-5">
-              <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">현재 마케팅</h3>
+              <h3 className="text-xs font-semibold text-muted mb-3 uppercase tracking-wider">
+                현재 마케팅
+              </h3>
               <ul className="space-y-1.5">
                 {a.currentMarketing.map((m, i) => (
-                  <li key={i} className="text-sm text-muted">{m}</li>
+                  <li key={i} className="text-sm text-muted">
+                    {m}
+                  </li>
                 ))}
               </ul>
             </div>
             <div className="p-5">
-              <h3 className="text-xs font-semibold mb-3 uppercase tracking-wider" style={{ color: "#7c3aed" }}>미활용 채널 (추천)</h3>
+              <h3
+                className="text-xs font-semibold mb-3 uppercase tracking-wider"
+                style={{ color: "#7c3aed" }}
+              >
+                미활용 채널 (추천)
+              </h3>
               <ul className="space-y-1.5">
                 {a.missingMarketing.map((m, i) => (
-                  <li key={i} className="text-sm" style={{ color: "#7c3aed" }}>{m}</li>
+                  <li key={i} className="text-sm" style={{ color: "#7c3aed" }}>
+                    {m}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -274,11 +321,19 @@ export default function PlanPage() {
 
           {/* Quick Wins */}
           <div className="p-5 border-t border-border">
-            <h3 className="text-xs font-semibold mb-3 uppercase tracking-wider" style={{ color: "#f59e0b" }}>지금 바로 실행 가능한 액션</h3>
+            <h3
+              className="text-xs font-semibold mb-3 uppercase tracking-wider"
+              style={{ color: "#f59e0b" }}
+            >
+              지금 바로 실행 가능한 액션
+            </h3>
             <ol className="space-y-2">
               {a.quickWins.map((w, i) => (
                 <li key={i} className="text-sm flex gap-2">
-                  <span className="font-bold text-xs mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: "#f59e0b", color: "white" }}>
+                  <span
+                    className="font-bold text-xs mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "#f59e0b", color: "white" }}
+                  >
                     {i + 1}
                   </span>
                   {w}
@@ -288,8 +343,16 @@ export default function PlanPage() {
           </div>
 
           {/* Verdict */}
-          <div className="p-5 border-t border-border" style={{ backgroundColor: "rgba(124, 58, 237, 0.05)" }}>
-            <h3 className="text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: "#7c3aed" }}>종합 평가</h3>
+          <div
+            className="p-5 border-t border-border"
+            style={{ backgroundColor: "rgba(124, 58, 237, 0.05)" }}
+          >
+            <h3
+              className="text-xs font-semibold mb-2 uppercase tracking-wider"
+              style={{ color: "#7c3aed" }}
+            >
+              종합 평가
+            </h3>
             <p className="text-sm leading-relaxed">{a.verdict}</p>
           </div>
         </div>
@@ -332,7 +395,9 @@ export default function PlanPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1.5">타겟 고객</label>
+            <label className="block text-sm font-medium mb-1.5">
+              타겟 고객
+            </label>
             <input
               type="text"
               value={form.targetAudience}
@@ -342,7 +407,9 @@ export default function PlanPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">현재 단계</label>
+            <label className="block text-sm font-medium mb-1.5">
+              현재 단계
+            </label>
             <select
               value={form.stage}
               onChange={(e) => update("stage", e.target.value)}
@@ -358,7 +425,9 @@ export default function PlanPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium mb-1.5">현재 유저 수</label>
+            <label className="block text-sm font-medium mb-1.5">
+              현재 유저 수
+            </label>
             <input
               type="text"
               value={form.userCount}
@@ -368,7 +437,9 @@ export default function PlanPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">마케팅 예산</label>
+            <label className="block text-sm font-medium mb-1.5">
+              마케팅 예산
+            </label>
             <select
               value={form.budget}
               onChange={(e) => update("budget", e.target.value)}

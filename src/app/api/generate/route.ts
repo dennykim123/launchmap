@@ -9,8 +9,8 @@ const buildResourceContext = () => {
         .flatMap((sec) =>
           sec.resources.map(
             (r) =>
-              `- [${r.tag || ""}] ${r.title}: ${r.description || ""} (${r.url})`
-          )
+              `- [${r.tag || ""}] ${r.title}: ${r.description || ""} (${r.url})`,
+          ),
         )
         .join("\n");
       return `## ${cat.emoji} ${cat.title}\n${cat.description}\n${resources}`;
@@ -58,18 +58,49 @@ export async function POST(req: NextRequest) {
   if (!apiKey) {
     return NextResponse.json(
       { error: "API key not configured" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
   const body = await req.json();
-  const { productName, productDescription, targetAudience, stage, userCount, budget } = body;
+  const {
+    productName,
+    productDescription,
+    targetAudience,
+    stage,
+    userCount,
+    budget,
+    analysis,
+  } = body;
 
   if (!productName || !productDescription) {
     return NextResponse.json(
       { error: "제품 이름과 설명은 필수입니다" },
-      { status: 400 }
+      { status: 400 },
     );
+  }
+
+  let analysisContext = "";
+  if (analysis) {
+    analysisContext = `
+
+## 사전 분석 결과 (이 정보를 반드시 반영하여 더 정확한 플랜을 만드세요)
+- 한줄 요약: ${analysis.oneLiner || ""}
+- 카테고리: ${analysis.category || ""}
+- 비즈니스 모델: ${analysis.businessModel || ""}
+- 가격: ${analysis.pricing || ""}
+- 핵심 기능: ${(analysis.coreFeatures || []).join(", ")}
+- 차별화 포인트: ${analysis.uniqueValue || ""}
+- 경쟁 제품: ${(analysis.competitors || []).join(", ")}
+- 시장 규모: ${analysis.marketSize || ""}
+- 강점: ${(analysis.strengths || []).join(", ")}
+- 약점/리스크: ${(analysis.weaknesses || []).join(", ")}
+- 현재 마케팅 채널: ${(analysis.currentMarketing || []).join(", ")}
+- 미활용 추천 채널: ${(analysis.missingMarketing || []).join(", ")}
+- 즉시 실행 가능 액션: ${(analysis.quickWins || []).join(", ")}
+- 종합 평가: ${analysis.verdict || ""}
+
+중요: 미활용 추천 채널과 즉시 실행 가능 액션을 Phase 1에 우선적으로 반영하세요. 약점/리스크는 피해야 할 전략(avoid)에 반영하세요.`;
   }
 
   const userMessage = `제 제품을 분석하고 맞춤 마케팅 파이프라인을 만들어주세요.
@@ -79,7 +110,7 @@ export async function POST(req: NextRequest) {
 타겟 고객: ${targetAudience || "미정"}
 현재 단계: ${stage || "미정"}
 현재 유저 수: ${userCount || "0"}
-마케팅 예산: ${budget || "없음"}`;
+마케팅 예산: ${budget || "없음"}${analysisContext}`;
 
   const client = new Anthropic({ apiKey });
 
@@ -101,7 +132,7 @@ export async function POST(req: NextRequest) {
   } catch {
     return NextResponse.json(
       { error: "AI 응답 파싱 실패", raw: text },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
