@@ -2,24 +2,32 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getPlans, deletePlan, getStageLabel, type SavedPlan } from "@/data/plans";
+import { fetchPlans, removePlan, getStageLabel, type SavedPlan } from "@/data/plans";
 
 export default function PlansPage() {
   const [plans, setPlans] = useState<SavedPlan[]>([]);
-  const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
-    setPlans(getPlans());
+    fetchPlans().then((data) => {
+      setPlans(data);
+      setLoading(false);
+    });
   }, []);
 
-  const handleDelete = (id: string, name: string) => {
+  const handleDelete = async (id: string, name: string) => {
     if (!confirm(`"${name}" 플랜을 삭제하시겠습니까?`)) return;
-    deletePlan(id);
-    setPlans(getPlans());
+    await removePlan(id);
+    setPlans((prev) => prev.filter((p) => p.id !== id));
   };
 
-  if (!mounted) return null;
+  if (loading) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-12 text-center text-muted">
+        불러오는 중...
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
@@ -75,10 +83,7 @@ export default function PlansPage() {
                 key={p.id}
                 className="rounded-xl border border-border bg-card hover:bg-card-hover transition-all overflow-hidden"
               >
-                <Link
-                  href={`/plans/${p.id}`}
-                  className="block p-5"
-                >
+                <Link href={`/plans/${p.id}`} className="block p-5">
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div className="min-w-0">
                       <h2 className="font-bold text-lg truncate">
@@ -119,11 +124,6 @@ export default function PlansPage() {
                           {ch}
                         </span>
                       ))}
-                      {p.plan.channels.length > 3 && (
-                        <span className="text-[10px] text-muted">
-                          +{p.plan.channels.length - 3}
-                        </span>
-                      )}
                     </div>
                   </div>
                 </Link>

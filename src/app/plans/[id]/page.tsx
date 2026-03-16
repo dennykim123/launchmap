@@ -3,22 +3,29 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getPlanById, getStageLabel, type SavedPlan } from "@/data/plans";
+import { fetchPlan, getStageLabel, type SavedPlan } from "@/data/plans";
 import PlanResult from "@/components/PlanResult";
 
 export default function PlanDetailPage() {
   const params = useParams();
   const [plan, setPlan] = useState<SavedPlan | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setMounted(true);
     const id = params.id as string;
-    const found = getPlanById(id);
-    setPlan(found || null);
+    fetchPlan(id).then((data) => {
+      setPlan(data);
+      setLoading(false);
+    });
   }, [params.id]);
 
-  if (!mounted) return null;
+  if (loading) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-12 text-center text-muted">
+        불러오는 중...
+      </div>
+    );
+  }
 
   if (!plan) {
     return (
@@ -61,7 +68,9 @@ export default function PlanDetailPage() {
       <div className="rounded-xl border border-border bg-card p-6 mb-10">
         <div className="flex items-start justify-between gap-4 mb-4">
           <h1 className="text-2xl font-bold">{plan.form.productName}</h1>
-          <span className="text-xs text-muted whitespace-nowrap">{dateStr}</span>
+          <span className="text-xs text-muted whitespace-nowrap">
+            {dateStr}
+          </span>
         </div>
         <p className="text-sm text-foreground/80 mb-4">
           {plan.form.productDescription}

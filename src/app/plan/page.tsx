@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { savePlan, type SavedPlan } from "@/data/plans";
+import { createPlan, type SavedPlan } from "@/data/plans";
 import PlanResult from "@/components/PlanResult";
 
 export default function PlanPage() {
@@ -34,7 +34,7 @@ export default function PlanPage() {
       if (data.error) {
         setError(data.error);
       } else {
-        const result = savePlan(form, data);
+        const result = await createPlan(form, data);
         setSaved(result);
       }
     } catch {

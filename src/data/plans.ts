@@ -28,40 +28,6 @@ export interface SavedPlan {
   };
 }
 
-const STORAGE_KEY = "launchmap-plans";
-
-export function getPlans(): SavedPlan[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-export function savePlan(form: SavedPlan["form"], plan: SavedPlan["plan"]): SavedPlan {
-  const plans = getPlans();
-  const saved: SavedPlan = {
-    id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-    createdAt: new Date().toISOString(),
-    form,
-    plan,
-  };
-  plans.unshift(saved);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(plans));
-  return saved;
-}
-
-export function getPlanById(id: string): SavedPlan | undefined {
-  return getPlans().find((p) => p.id === id);
-}
-
-export function deletePlan(id: string): void {
-  const plans = getPlans().filter((p) => p.id !== id);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(plans));
-}
-
 const stageLabels: Record<string, string> = {
   idea: "아이디어",
   mvp: "MVP",
@@ -71,4 +37,33 @@ const stageLabels: Record<string, string> = {
 
 export function getStageLabel(stage: string): string {
   return stageLabels[stage] || stage;
+}
+
+// Server API helpers
+export async function fetchPlans(): Promise<SavedPlan[]> {
+  const res = await fetch("/api/plans");
+  if (!res.ok) return [];
+  return res.json();
+}
+
+export async function fetchPlan(id: string): Promise<SavedPlan | null> {
+  const res = await fetch(`/api/plans/${id}`);
+  if (!res.ok) return null;
+  return res.json();
+}
+
+export async function createPlan(
+  form: SavedPlan["form"],
+  plan: SavedPlan["plan"]
+): Promise<SavedPlan> {
+  const res = await fetch("/api/plans", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ form, plan }),
+  });
+  return res.json();
+}
+
+export async function removePlan(id: string): Promise<void> {
+  await fetch(`/api/plans/${id}`, { method: "DELETE" });
 }
