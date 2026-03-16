@@ -90,18 +90,15 @@ export default async function CategoryPage({ params }: { params: Params }) {
                   hostname = resource.url;
                 }
                 const faviconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`;
-                const tagColors: Record<string, string> = {
-                  가이드:
-                    "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
-                  도구: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
-                  템플릿:
-                    "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-                  코스: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300",
-                  사례: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300",
-                  커뮤니티:
-                    "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
-                  영상: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300",
-                  예시: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300",
+                const tagStyles: Record<string, React.CSSProperties> = {
+                  가이드: { borderColor: "#3b82f6", color: "#2563eb" },
+                  도구: { borderColor: "#22c55e", color: "#16a34a" },
+                  템플릿: { borderColor: "#f59e0b", color: "#d97706" },
+                  코스: { borderColor: "#a855f7", color: "#9333ea" },
+                  사례: { borderColor: "#f43f5e", color: "#e11d48" },
+                  커뮤니티: { borderColor: "#f97316", color: "#ea580c" },
+                  영상: { borderColor: "#ef4444", color: "#dc2626" },
+                  예시: { borderColor: "#14b8a6", color: "#0d9488" },
                 };
                 return (
                   <li key={j}>
@@ -127,7 +124,8 @@ export default async function CategoryPage({ params }: { params: Params }) {
                           </span>
                           {resource.tag && (
                             <span
-                              className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${tagColors[resource.tag] || ""}`}
+                              className="text-[10px] px-1.5 py-0.5 rounded-full font-medium border"
+                              style={tagStyles[resource.tag] || {}}
                             >
                               {resource.tag}
                             </span>
