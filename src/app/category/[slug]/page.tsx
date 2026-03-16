@@ -82,39 +82,70 @@ export default async function CategoryPage({ params }: { params: Params }) {
               <p className="text-sm text-muted mb-4 italic">{section.note}</p>
             )}
             <ul className="space-y-2">
-              {section.resources.map((resource, j) => (
-                <li key={j}>
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-start gap-3 rounded-lg border border-border bg-card p-4 hover:bg-card-hover hover:border-accent/30 transition-all"
-                  >
-                    <span className="text-accent-light mt-0.5 shrink-0 opacity-50 group-hover:opacity-100 transition-opacity">
-                      ↗
-                    </span>
-                    <div className="min-w-0">
-                      <span className="text-sm font-medium text-foreground group-hover:text-accent-light transition-colors">
-                        {resource.title}
-                      </span>
-                      {resource.description && (
-                        <p className="text-xs text-muted mt-1">
-                          {resource.description}
+              {section.resources.map((resource, j) => {
+                let hostname = "";
+                try {
+                  hostname = new URL(resource.url).hostname;
+                } catch {
+                  hostname = resource.url;
+                }
+                const faviconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`;
+                const tagColors: Record<string, string> = {
+                  가이드:
+                    "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
+                  도구: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
+                  템플릿:
+                    "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
+                  코스: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300",
+                  사례: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300",
+                  커뮤니티:
+                    "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
+                  영상: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300",
+                  예시: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300",
+                };
+                return (
+                  <li key={j}>
+                    <a
+                      href={resource.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-start gap-3 rounded-lg border border-border bg-card p-4 hover:bg-card-hover hover:border-accent/30 transition-all"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={faviconUrl}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="mt-0.5 shrink-0 rounded"
+                        loading="lazy"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-sm font-medium text-foreground group-hover:text-accent-light transition-colors">
+                            {resource.title}
+                          </span>
+                          {resource.tag && (
+                            <span
+                              className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${tagColors[resource.tag] || ""}`}
+                            >
+                              {resource.tag}
+                            </span>
+                          )}
+                        </div>
+                        {resource.description && (
+                          <p className="text-xs text-muted mt-1 leading-relaxed">
+                            {resource.description}
+                          </p>
+                        )}
+                        <p className="text-xs text-muted/50 mt-1 truncate">
+                          {hostname}
                         </p>
-                      )}
-                      <p className="text-xs text-muted/50 mt-1 truncate">
-                        {(() => {
-                          try {
-                            return new URL(resource.url).hostname;
-                          } catch {
-                            return resource.url;
-                          }
-                        })()}
-                      </p>
-                    </div>
-                  </a>
-                </li>
-              ))}
+                      </div>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </section>
         ))}
