@@ -31,7 +31,7 @@ const gamePhases = [
   {
     label: "스케일",
     icon: "🌍",
-    slugs: ["game-publisher", "game-localization"],
+    slugs: ["game-publisher", "game-localization", "game-resources"],
   },
 ];
 
